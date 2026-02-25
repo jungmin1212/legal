@@ -10,7 +10,7 @@
     .meta { color: #888; font-size: 0.9rem; margin-bottom: 40px; }
     h2 { font-size: 1.05rem; margin-top: 36px; }
     a { color: #6366f1; }
-    .back { font-size: 0.85rem; margin-bottom: 32px; }
+    .notice { background: #fef9ec; border-left: 3px solid #f59e0b; padding: 12px 16px; margin: 24px 0; font-size: 0.92rem; }
   </style>
 </head>
 <body>
@@ -18,19 +18,26 @@
   <p class="meta">App: Price Calc &nbsp;·&nbsp; Developer: no10messi.skr &nbsp;·&nbsp; Last updated: February 2026</p>
 
   <h2>Overview</h2>
-  <p>Price Calc is a simple offline calculator app. This app does not collect, store, transmit, or share any personal information or user data of any kind.</p>
+  <p>Price Calc is a unit price calculator app. The core calculation features work entirely on-device with no internet connection required. However, the optional live rate features (exchange rates and SOL price) make read-only outbound requests to third-party data providers as described below.</p>
 
-  <h2>Data Collection</h2>
-  <p>We collect no data. Price Calc operates entirely on your device. No account, login, or internet connection is required to use this app.</p>
+  <h2>Data We Collect</h2>
+  <p>Price Calc does <strong>not</strong> collect, store, transmit, or share any personal information. No account or login is required. No usage analytics or advertising identifiers are gathered.</p>
 
-  <h2>Internet Access</h2>
-  <p>Price Calc does not require or use an internet connection. No data is sent to any server at any time.</p>
+  <h2>Internet Access &amp; Outbound Requests</h2>
+  <p>When live rate display is active, the app makes anonymous, read-only HTTP requests to the following external services:</p>
+  <ul>
+    <li><strong>Pyth Network (Hermes REST API)</strong> — <a href="https://hermes.pyth.network">hermes.pyth.network</a><br>
+        Used to retrieve the current SOL/USD price feed. Requests contain only the requested price feed identifier; no personal data is transmitted.</li>
+    <li><strong>Frankfurter API</strong> — <a href="https://www.frankfurter.app">frankfurter.app</a><br>
+        Used to retrieve live fiat currency exchange rates (USD base). Requests contain no personal data.</li>
+  </ul>
+  <p>Both services are queried at most once every 60 seconds. No data entered by the user is ever sent to these or any other servers.</p>
 
   <h2>Blockchain &amp; Wallet</h2>
-  <p>Price Calc does not connect to any blockchain network and does not interact with cryptocurrency wallets of any kind. No on-chain transactions are initiated by this app.</p>
+  <p>Price Calc does not connect to any blockchain network for transactions and does not interact with cryptocurrency wallets. The Pyth Network integration is strictly a read-only price oracle query — no on-chain transactions are initiated and no wallet credentials are accessed.</p>
 
   <h2>Third-Party Services</h2>
-  <p>This app does not integrate any third-party analytics, advertising, or tracking services.</p>
+  <p>The two data providers listed above operate under their own privacy policies. Price Calc is not responsible for the data practices of Pyth Network or Frankfurter. Their services are queried anonymously and solely to display indicative rate information within the app.</p>
 
   <h2>Children's Privacy</h2>
   <p>This app does not collect any information from anyone, including children under the age of 13.</p>
