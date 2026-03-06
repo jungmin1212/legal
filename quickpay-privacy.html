@@ -15,35 +15,51 @@
 </head>
 <body>
   <h1>Privacy Policy</h1>
-  <p class="meta">App: QuickPay &nbsp;·&nbsp; Developer: no10messi.skr &nbsp;·&nbsp; Last updated: February 2026</p>
+  <p class="meta">App: QuickPay v1.2 &nbsp;·&nbsp; Developer: no10messi.skr &nbsp;·&nbsp; Last updated: March 2026</p>
 
   <div class="highlight">
-    QuickPay is a non-custodial, serverless Solana payment app. We do not operate any servers, and we do not collect, store, or transmit any personal data.
+    QuickPay is a non-custodial, serverless Solana payment app. We do not operate any servers, and we do not collect, store, or transmit any personal data to external services.
   </div>
 
   <h2>Overview</h2>
-  <p>QuickPay allows users to send and receive SOL, USDC, and USDT on the Solana blockchain using fixed-amount QR codes. All transactions occur directly on the Solana network. QuickPay never holds, controls, or has access to user funds or private keys.</p>
+  <p>QuickPay allows users to send and receive SOL, USDC, USDT, and SKR (Seeker) on the Solana blockchain. Features include Solana Pay QR code generation and scanning, direct wallet-to-wallet transfers, token balance display, and local transaction history. All transactions occur directly on the Solana network. QuickPay never holds, controls, or has access to user funds or private keys.</p>
 
   <h2>Data Collection</h2>
   <p>QuickPay collects no personal information. We do not collect your name, email address, phone number, location, or any other identifying information. No account or registration is required.</p>
 
+  <h2>Local Data Storage</h2>
+  <p>QuickPay stores the following data locally on your device only (via AsyncStorage). This data never leaves your device and is not transmitted to any server:</p>
+  <ul>
+    <li><strong>Wallet connection info:</strong> Your public key (wallet address), MWA auth token, and wallet URI for reconnecting to the same wallet without re-authorization.</li>
+    <li><strong>Transaction history:</strong> Records of payments you have sent or received through the app, including transaction signatures, amounts, and timestamps.</li>
+    <li><strong>Quick amount presets:</strong> User-configured quick-select amount values.</li>
+    <li><strong>PIN settings:</strong> If you enable the optional PIN lock, a hashed PIN is stored locally for device-level app security.</li>
+  </ul>
+  <p>You can clear all locally stored data at any time by clearing the app's data through your device settings or by disconnecting your wallet within the app.</p>
+
+  <h2>Camera Permission</h2>
+  <p>QuickPay requests camera access solely to scan QR codes for payment processing. The camera is used only within the QR scanner screen. No images or video are recorded, stored, or transmitted. Camera access can be revoked at any time through your device settings.</p>
+
   <h2>Private Keys &amp; Wallet Security</h2>
-  <p>QuickPay does not access your private keys or seed phrase. All cryptographic signing is handled exclusively by the Solana Mobile Seed Vault, a secure hardware element on your device. QuickPay never sees, stores, or transmits your private key.</p>
+  <p>QuickPay does not access your private keys or seed phrase. All cryptographic signing is handled exclusively by the Solana Mobile Seed Vault, a secure hardware element on your device. QuickPay communicates with the Seed Vault through the Mobile Wallet Adapter (MWA) protocol, which never exposes private key material to the application.</p>
 
   <h2>Blockchain Transactions</h2>
-  <p>When you send or receive a payment, the transaction is broadcast directly to the Solana blockchain. Blockchain transactions are public by nature. QuickPay does not store transaction records on any server — all history is available on the public Solana ledger.</p>
+  <p>When you send or receive a payment, the transaction is broadcast directly to the Solana blockchain. Blockchain transactions are public by nature. Transaction history displayed within the app is stored locally on your device and also available on the public Solana ledger.</p>
 
   <h2>No Servers</h2>
-  <p>QuickPay operates without a backend server. The app communicates directly with Solana RPC nodes solely to submit and confirm transactions. We do not log, store, or analyze any of this activity.</p>
+  <p>QuickPay operates without a backend server. The app communicates directly with Solana RPC nodes solely to submit and confirm transactions, fetch token balances, and monitor incoming payments.</p>
 
   <h2>Third-Party Services</h2>
-  <p>QuickPay does not integrate any advertising, analytics, or tracking services. The app communicates directly with Solana RPC nodes (including public endpoints and Helius, a third-party RPC provider) solely to query and submit transactions on the Solana blockchain. No personal data is transmitted to these services.</p>
-  <p>When SOL is selected, QuickPay fetches real-time SOL/USD price data for display purposes using the following services in order of priority:</p>
+  <p>QuickPay does not integrate any advertising, analytics, or tracking services. The app communicates with the following external services solely for blockchain operations and price data:</p>
   <ul>
-    <li><strong>Primary:</strong> Jupiter Price API (<code>api.jup.ag</code>) — used first for all price lookups.</li>
-    <li><strong>Fallback:</strong> CoinGecko API — used only when the Jupiter API is unavailable or returns no data.</li>
+    <li><strong>Solana RPC endpoints:</strong> Public endpoints (Ankr, Solana Mainnet) for submitting transactions, fetching balances, and confirming payments. No personal data is transmitted.</li>
+    <li><strong>Jupiter Price API</strong> (<code>api.jup.ag</code>): Primary source for real-time SOL/USD and SKR/USD price data.</li>
+    <li><strong>CoinGecko API:</strong> Fallback price data source used only when Jupiter is unavailable.</li>
   </ul>
-  <p>No personal data is transmitted to either service. The USD amounts and token quantity estimates shown in the app are approximate reference values derived from market price data and may differ from actual on-chain amounts. The app displays an "≈" symbol to indicate that values are estimates. Users are responsible for verifying the exact token amount before confirming any transaction.</p>
+  <p>No personal data is transmitted to any of these services. The USD amounts and token quantity estimates shown in the app are approximate reference values derived from market price data and may differ from actual on-chain amounts. The app displays an "≈" symbol and a disclaimer to indicate that values are estimates.</p>
+
+  <h2>Notifications</h2>
+  <p>QuickPay may display local notifications to alert you when an incoming payment is confirmed. These notifications are generated entirely on-device. No push notification service or external server is used.</p>
 
   <h2>Children's Privacy</h2>
   <p>QuickPay does not knowingly collect any data from anyone, including children under the age of 13.</p>
