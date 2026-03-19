@@ -15,14 +15,14 @@
 </head>
 <body>
   <h1>Privacy Policy</h1>
-  <p class="meta">App: QuickPay v1.2 &nbsp;·&nbsp; Developer: no10messi.skr &nbsp;·&nbsp; Last updated: March 2026</p>
+  <p class="meta">App: QuickPay v1.3 &nbsp;·&nbsp; Developer: no10messi.skr &nbsp;·&nbsp; Last updated: March 2026</p>
 
   <div class="highlight">
     QuickPay is a non-custodial, serverless Solana payment app. We do not operate any servers, and we do not collect, store, or transmit any personal data to external services.
   </div>
 
   <h2>Overview</h2>
-  <p>QuickPay allows users to send and receive SOL, USDC, USDT, and SKR (Seeker) on the Solana blockchain. Features include Solana Pay QR code generation and scanning, direct wallet-to-wallet transfers, token balance display, and local transaction history. All transactions occur directly on the Solana network. QuickPay never holds, controls, or has access to user funds or private keys.</p>
+  <p>QuickPay allows users to send and receive SOL, USDC, USDT, and SKR (Seeker) on the Solana blockchain. Features include Solana Pay QR code generation and scanning, direct wallet-to-wallet transfers, token balance display, local transaction history with calendar view, receipt image generation, and local history backup. All transactions occur directly on the Solana network. QuickPay never holds, controls, or has access to user funds or private keys.</p>
 
   <h2>Data Collection</h2>
   <p>QuickPay collects no personal information. We do not collect your name, email address, phone number, location, or any other identifying information. No account or registration is required.</p>
@@ -37,11 +37,23 @@
   </ul>
   <p>You can clear all locally stored data at any time by clearing the app's data through your device settings or by disconnecting your wallet within the app.</p>
 
+  <h2>File Storage (On-Device)</h2>
+  <p>QuickPay may write the following files directly to your device storage upon explicit user action. These files are not transmitted to any server:</p>
+  <ul>
+    <li><strong>Receipt images:</strong> When you tap "Save to Gallery", a PNG receipt image is saved to <code>Pictures/QuickPay/</code> on your device. This requires storage write permission.</li>
+    <li><strong>History backup files:</strong> When you tap the backup button in the History screen, a JSON file containing your local transaction history is saved to <code>Downloads/QuickPay/</code>. These files can be restored into the app at any time from the same folder.</li>
+  </ul>
+  <p>These files remain entirely on your device. You can delete them at any time using your device's file manager.</p>
+
   <h2>Camera Permission</h2>
   <p>QuickPay requests camera access solely to scan QR codes for payment processing. The camera is used only within the QR scanner screen. No images or video are recorded, stored, or transmitted. Camera access can be revoked at any time through your device settings.</p>
 
   <h2>Private Keys &amp; Wallet Security</h2>
   <p>QuickPay does not access your private keys or seed phrase. All cryptographic signing is handled exclusively by the Solana Mobile Seed Vault, a secure hardware element on your device. QuickPay communicates with the Seed Vault through the Mobile Wallet Adapter (MWA) protocol, which never exposes private key material to the application.</p>
+  <p>For security, QuickPay restricts wallet connections exclusively to the Seed Vault. Third-party wallet apps (e.g., Phantom, Solflare) are not permitted to authorize transactions within QuickPay. This restriction is enforced at the application level to prevent unauthorized transaction signing.</p>
+
+  <h2>Token Security</h2>
+  <p>QuickPay validates incoming SPL token payments against a hardcoded whitelist of approved mint addresses (SOL, USDC, USDT, SKR). Payments involving unrecognized token mint addresses or mismatched token program owners are automatically rejected by the app. This measure protects users from accepting fraudulent or scam tokens.</p>
 
   <h2>Blockchain Transactions</h2>
   <p>When you send or receive a payment, the transaction is broadcast directly to the Solana blockchain. Blockchain transactions are public by nature. Transaction history displayed within the app is stored locally on your device and also available on the public Solana ledger.</p>
@@ -52,7 +64,7 @@
   <h2>Third-Party Services</h2>
   <p>QuickPay does not integrate any advertising, analytics, or tracking services. The app communicates with the following external services solely for blockchain operations and price data:</p>
   <ul>
-    <li><strong>Solana RPC endpoints:</strong> Public endpoints (Ankr, Solana Mainnet) for submitting transactions, fetching balances, and confirming payments. No personal data is transmitted.</li>
+    <li><strong>Solana RPC endpoints:</strong> Public endpoints (PublicNode, Helius, Solana Mainnet) for submitting transactions, fetching balances, and confirming payments. No personal data is transmitted.</li>
     <li><strong>Jupiter Price API</strong> (<code>api.jup.ag</code>): Primary source for real-time SOL/USD and SKR/USD price data.</li>
     <li><strong>CoinGecko API:</strong> Fallback price data source used only when Jupiter is unavailable.</li>
   </ul>
