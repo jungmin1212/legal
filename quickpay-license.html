@@ -15,7 +15,7 @@
 </head>
 <body>
   <h1>End User License Agreement (EULA)</h1>
-  <p class="meta">App: QuickPay v1.2 &nbsp;·&nbsp; Developer: no10messi.skr &nbsp;·&nbsp; Last updated: March 2026</p>
+  <p class="meta">App: QuickPay v1.3 &nbsp;·&nbsp; Developer: no10messi.skr &nbsp;·&nbsp; Last updated: March 2026</p>
 
   <h2>License Grant</h2>
   <p>By downloading and using QuickPay, you are granted a limited, non-exclusive, non-transferable license to use this app on your personal device for personal or commercial payment purposes.</p>
@@ -26,6 +26,22 @@
     <li>You may not distribute, sublicense, rent, or resell the app.</li>
     <li>You may not use the app for any unlawful purpose.</li>
   </ul>
+
+  <h2>Security Restrictions</h2>
+  <p>QuickPay enforces the following security measures at the application level:</p>
+  <ul>
+    <li><strong>Seed Vault only:</strong> Wallet authorization is restricted exclusively to the Solana Mobile Seed Vault. Connections from third-party wallet apps (e.g., Phantom, Solflare) are blocked. This is a deliberate design decision to prevent unauthorized transaction signing.</li>
+    <li><strong>Token whitelist:</strong> Incoming SPL token payments are validated against a hardcoded whitelist of approved mint addresses (SOL, USDC, USDT, SKR). Payments from unrecognized or mismatched token programs are automatically rejected to protect users from scam tokens.</li>
+  </ul>
+  <p>These restrictions are non-configurable and exist solely for user protection.</p>
+
+  <h2>Storage Permissions</h2>
+  <p>QuickPay requests storage write permission for the following purposes:</p>
+  <ul>
+    <li><strong>Receipt images:</strong> Saving PNG receipt images to <code>Pictures/QuickPay/</code> on your device when you tap "Save to Gallery".</li>
+    <li><strong>History backups:</strong> Saving JSON backup files to <code>Downloads/QuickPay/</code> when you tap the backup button in the History screen. These files can be restored into the app at any time.</li>
+  </ul>
+  <p>Storage is accessed only upon explicit user action. No files are written automatically or in the background.</p>
 
   <h2>Open Source Components</h2>
   <p>QuickPay is built on top of the following open source technologies:</p>
@@ -55,21 +71,43 @@
   </div>
 
   <div class="box">
+    <strong>SPL Token (Solana Program Library)</strong><br/>
+    Licensed under the Apache License 2.0<br/>
+    <a href="https://github.com/solana-labs/solana-program-library" target="_blank">github.com/solana-labs/solana-program-library</a>
+  </div>
+
+  <div class="box">
     <strong>React Native Camera Kit</strong><br/>
     Licensed under the MIT License<br/>
     <a href="https://github.com/teslamotors/react-native-camera-kit" target="_blank">github.com/teslamotors/react-native-camera-kit</a>
   </div>
 
   <div class="box">
-    <strong>SPL Token (Solana Program Library)</strong><br/>
-    Licensed under the Apache License 2.0<br/>
-    <a href="https://github.com/solana-labs/solana-program-library" target="_blank">github.com/solana-labs/solana-program-library</a>
+    <strong>react-native-view-shot</strong><br/>
+    Licensed under the MIT License<br/>
+    Used for capturing receipt images from UI components.<br/>
+    <a href="https://github.com/gre/react-native-view-shot" target="_blank">github.com/gre/react-native-view-shot</a>
+  </div>
+
+  <div class="box">
+    <strong>react-native-share</strong><br/>
+    Licensed under the MIT License<br/>
+    Used for sharing receipt images via the Android share sheet.<br/>
+    <a href="https://github.com/react-native-share/react-native-share" target="_blank">github.com/react-native-share/react-native-share</a>
+  </div>
+
+  <div class="box">
+    <strong>react-native-fs</strong><br/>
+    Licensed under the MIT License<br/>
+    Used for saving receipt images to the gallery and writing history backup files to device storage.<br/>
+    <a href="https://github.com/itinance/react-native-fs" target="_blank">github.com/itinance/react-native-fs</a>
   </div>
 
   <h2>Disclaimer</h2>
   <p>QuickPay is provided "as is" without warranty of any kind. The developer is not responsible for any loss of funds resulting from user error, network failure, or third-party service issues. All transactions on the Solana blockchain are irreversible.</p>
   <p>When SOL or SKR is selected, the app displays an estimated token quantity and USD equivalent (marked with "≈") based on real-time price data. Price data is fetched primarily from the Jupiter Price API (<code>api.jup.ag</code>), with CoinGecko used as a fallback when Jupiter is unavailable. These values are approximate and for reference only. Actual token amounts on-chain may differ due to price volatility, API update intervals, and differences between oracle prices and DEX execution prices. The app explicitly notifies users to verify the exact token quantity before confirming a transaction. The developer is not responsible for any discrepancy between displayed estimates and actual settled amounts.</p>
   <p>Token balance information displayed in the app is fetched from public Solana RPC endpoints and may be subject to network delays. Displayed balances are for informational purposes and should not be considered a guarantee of available funds.</p>
+  <p>Receipt images and history backup files saved to device storage are the user's sole responsibility. The developer is not liable for data loss resulting from device failure, storage issues, or user deletion of these files.</p>
 
   <h2>Termination</h2>
   <p>This license is effective until terminated. It will terminate automatically if you fail to comply with any of the terms above.</p>
