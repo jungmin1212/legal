@@ -39,9 +39,9 @@
   <p>QuickPay requests storage write permission for the following purposes:</p>
   <ul>
     <li><strong>Receipt images:</strong> Saving PNG receipt images to <code>Pictures/QuickPay/</code> on your device when you tap "Save to Gallery".</li>
-    <li><strong>History backups:</strong> Saving JSON backup files to <code>Downloads/QuickPay/</code> when you tap the backup button in the History screen. These files can be restored into the app at any time.</li>
+    <li><strong>History backups:</strong> Saving JSON backup files to <code>Downloads/QuickPay/</code> when you tap the backup button manually, or automatically once every 24 hours when the History screen is opened (foreground only, no background service). A maximum of 3 backup files are kept; the oldest is deleted automatically. These files can be restored into the app at any time.</li>
   </ul>
-  <p>Storage is accessed only upon explicit user action. No files are written automatically or in the background.</p>
+  <p>Storage is accessed only while the app is in the foreground. No files are written by background services.</p>
 
   <h2>Open Source Components</h2>
   <p>QuickPay is built on top of the following open source technologies:</p>
@@ -101,6 +101,13 @@
     Licensed under the MIT License<br/>
     Used for saving receipt images to the gallery and writing history backup files to device storage.<br/>
     <a href="https://github.com/itinance/react-native-fs" target="_blank">github.com/itinance/react-native-fs</a>
+  </div>
+
+  <div class="box">
+    <strong>react-native-webview</strong><br/>
+    Licensed under the MIT License<br/>
+    Used for displaying the Solana Explorer transaction receipt view within the app.<br/>
+    <a href="https://github.com/react-native-webview/react-native-webview" target="_blank">github.com/react-native-webview/react-native-webview</a>
   </div>
 
   <h2>Disclaimer</h2>
