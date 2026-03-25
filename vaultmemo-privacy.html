@@ -32,7 +32,7 @@
   <ul>
     <li><strong>Wallet connection info:</strong> Your public key (wallet address), MWA auth token, and wallet URI base for reconnecting to the Seed Vault without re-authorization.</li>
     <li><strong>Encryption key:</strong> Your AES-256 encryption key is stored in the Android Keystore (TEE hardware), protected by biometric authentication. It is never exported or transmitted.</li>
-    <li><strong>Transaction metadata:</strong> For each saved memo, the corresponding Solana transaction ID (TxID), approximate SKR amount paid, and timestamp are embedded directly inside the encrypted <code>.enc</code> file itself. This data is also cached in AsyncStorage for quick access. It is never transmitted to any server.</li>
+    <li><strong>Transaction metadata:</strong> For each saved memo, the corresponding Solana transaction ID (TxID), approximate SKR amount paid, and timestamp are embedded directly inside the <code>.enc</code> file itself. This data is also cached in AsyncStorage for quick access. Neither is ever transmitted to any server.</li>
     <li><strong>Theme preference:</strong> Your selected UI theme (light/dark) is stored locally.</li>
   </ul>
 
