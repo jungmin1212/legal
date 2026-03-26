@@ -31,7 +31,7 @@
   <p>VaultMemo enforces the following security measures at the application level:</p>
   <ul>
     <li><strong>Seed Vault only:</strong> Wallet authorization is restricted exclusively to the Solana Mobile Seed Vault. Connections from third-party wallet apps (e.g., Phantom, Solflare) are blocked. This is a deliberate design decision to prevent unauthorized key derivation and transaction signing.</li>
-    <li><strong>Hardware-bound encryption key:</strong> Your AES-256 encryption key is stored in the Android Keystore (Trusted Execution Environment) and bound to your currently registered fingerprint. The key cannot be extracted from the device.</li>
+    <li><strong>Wallet-bound encryption key:</strong> Your AES-256 encryption key is deterministically derived from your Solana Seed Vault wallet signature each time it is needed. No key is stored on the device. Anyone with access to your seed phrase can recreate the encryption key and decrypt your files on any device. You are solely responsible for protecting your seed phrase.</li>
     <li><strong>Session lock:</strong> The encryption key is cleared from memory whenever the app enters the background or the screen is turned off. Biometric re-authentication is required to resume.</li>
   </ul>
   <p>These restrictions are non-configurable and exist solely for user protection.</p>
@@ -59,7 +59,7 @@
     <li>Device failure, loss, or damage</li>
     <li>App uninstallation: Clears the internal document directory. However, encrypted .enc files saved to the public <code>Downloads/VaultMemo/</code> folder will persist on your device. You can manually re-import these files after reinstallation.</li>
     <li>Loss of the Seed Vault seed phrase (renders decryption permanently impossible on any device)</li>
-    <li>Fingerprint change without prior re-derivation of the encryption key</li>
+    <li>Loss or compromise of the Seed Vault seed phrase (any person with the seed phrase can decrypt your files on any device)</li>
     <li>User deletion of backup files</li>
   </ul>
   <p>It is strongly recommended to maintain encrypted file backups in multiple locations (email, cloud storage, external drive).</p>
