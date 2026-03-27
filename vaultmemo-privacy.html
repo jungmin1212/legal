@@ -15,66 +15,58 @@
 </head>
 <body>
   <h1>Privacy Policy</h1>
-  <p class="meta">App: VaultMemo v1.0 &nbsp;·&nbsp; Developer: no10messi.skr &nbsp;·&nbsp; Last updated: March 2026</p>
+  <p class="meta">App: VaultMemo v2 &nbsp;·&nbsp; Developer: no10messi.skr &nbsp;·&nbsp; Last updated: March 2026</p>
 
   <div class="highlight">
-    VaultMemo is a local-first, privacy-focused encrypted memo app. We do not operate any proprietary servers. Your memo content is never transmitted to any server or recorded on the blockchain. Only a cryptographic hash reference and transaction metadata are recorded on-chain.
+    VaultMemo is a local-first, privacy-focused encrypted memo app. We do not operate any proprietary servers. Your memo content is never transmitted to any server or recorded on the blockchain. Only a cryptographic hash fingerprint and transaction metadata are recorded on-chain.
   </div>
 
-  <h2>Overview</h2>
-  <p>VaultMemo allows users to encrypt personal memos using a key derived from their Solana Seed Vault wallet, store encrypted files locally on their device, and record a partial integrity hash on the Solana blockchain. The app never holds, reads, or transmits the content of your memos to any external party.</p>
-
   <h2>Data Collection</h2>
-  <p>VaultMemo collects no personal information. We do not collect your name, email address, phone number, location, or any other identifying information. No account or registration is required to use the app.</p>
+  <p>VaultMemo collects no personal information. No account or registration is required.</p>
 
   <h2>Local Data Storage</h2>
-  <p>VaultMemo stores the following data locally on your device only. This data never leaves your device and is not transmitted to any server:</p>
+  <p>The following data is stored locally on your device only and never transmitted to any server:</p>
   <ul>
-    <li><strong>Wallet connection info:</strong> Your public key (wallet address), MWA auth token, and wallet URI base for reconnecting to the Seed Vault without re-authorization.</li>
-    <li><strong>Encryption key:</strong> Your AES-256 encryption key is stored in the Android Keystore (TEE hardware), protected by biometric authentication. It is never exported or transmitted.</li>
-    <li><strong>Transaction metadata:</strong> For each saved memo, the corresponding Solana transaction ID (TxID), approximate SKR amount paid, and timestamp are embedded directly inside the <code>.enc</code> file itself. This data is also cached in AsyncStorage for quick access. Neither is ever transmitted to any server.</li>
-    <li><strong>Theme preference:</strong> Your selected UI theme (light/dark) is stored locally.</li>
+    <li><strong>Wallet info:</strong> Your public key (wallet address), MWA auth token, and wallet URI base for reconnecting without re-authorization.</li>
+    <li><strong>Encryption key:</strong> Stored in the Android Keystore (TEE), protected by biometric authentication. Never exported or transmitted.</li>
+    <li><strong>Transaction metadata:</strong> TxID, SKR amount, and timestamp are embedded inside each <code>.vam</code> file and cached in AsyncStorage. Never transmitted to any server.</li>
+    <li><strong>Theme preference:</strong> Light/dark mode setting, stored locally.</li>
   </ul>
 
   <h2>File Storage (On-Device)</h2>
-  <p>VaultMemo writes the following files to your device storage upon user action. These files are not transmitted to any server:</p>
-  <ul>
-    <li><strong>Encrypted memo files (.enc):</strong> Each file is a JSON document containing the AES-256-GCM encrypted memo (base64), the Solana transaction ID (TxID), and a timestamp. Files are saved to <code>Downloads/VaultMemo/</code> and the app's internal document directory (<code>DocumentDir/VaultMemo/</code>). The memo content is never readable without the correct encryption key, and the TxID embedded in the file allows verification of the corresponding on-chain record.</li>
-  </ul>
-  <p>These files remain entirely on your device. You can delete them at any time using your device's file manager. Without a backup, deleted files are permanently lost.</p>
+  <p>Upon user action, VaultMemo writes encrypted <code>.vam</code> files to <code>Downloads/VaultMemo/</code>. Each file contains the AES-256-GCM encrypted memo (base64), the Solana TxID, and a timestamp. Memo content is never readable without the correct encryption key. These files are not transmitted to any server.</p>
 
   <h2>Blockchain Data (Public)</h2>
-  <p>When you save a memo, VaultMemo submits a Solana transaction that contains:</p>
+  <p>When you save a memo, VaultMemo submits a Solana transaction containing:</p>
   <ul>
-    <li>A partial hash reference: the first 16 hexadecimal characters of the SHA-256 hash of your encrypted memo data, plus a Unix timestamp. This is recorded in an SPL Memo instruction.</li>
-    <li>An SKR token transfer from your wallet to the developer's wallet address as a usage fee (~$0.75).</li>
-    <li>A Solana Pay reference key (a randomly generated public key) for transaction tracking purposes.</li>
+    <li>A partial hash: the first 16 hex characters of the SHA-256 hash of your encrypted data, plus a Unix timestamp (SPL Memo instruction).</li>
+    <li>An SKR token transfer from your wallet to the developer's wallet (usage fee — see pricing tiers in the EULA).</li>
+    <li>A Solana Pay reference key (randomly generated) for transaction tracking.</li>
   </ul>
-  <p>Your wallet address (public key) and the above transaction data are visible on the public Solana blockchain. Your memo content itself is never included in or derivable from this on-chain record.</p>
+  <p>Your wallet address and the above data are visible on the public Solana blockchain. Your memo content is never included in or derivable from the on-chain record. <strong>Solana network fees are the user's responsibility.</strong></p>
 
   <h2>Biometric &amp; Hardware Security</h2>
-  <p>VaultMemo requires fingerprint authentication to unlock the vault. Biometric verification is handled entirely by the Android OS and the device's Trusted Execution Environment (TEE). The app never receives raw biometric data. The encryption key is bound to the currently registered fingerprint; if the fingerprint is changed, the key is automatically invalidated and must be re-derived.</p>
+  <p>Biometric verification is handled entirely by the Android OS and TEE. The app never receives raw biometric data. The encryption key is invalidated if the device fingerprint is changed.</p>
 
-  <h2>Private Keys &amp; Wallet Security</h2>
-  <p>VaultMemo does not access your private keys or seed phrase. All cryptographic signing is handled exclusively by the Solana Mobile Seed Vault. VaultMemo communicates with the Seed Vault through the Mobile Wallet Adapter (MWA) protocol, which never exposes private key material to the application. Wallet authorization is restricted exclusively to the Seed Vault; third-party wallet apps (e.g., Phantom, Solflare) are blocked at the application level.</p>
+  <h2>Wallet Security</h2>
+  <p>VaultMemo does not access your private keys or seed phrase. All signing is handled by the Solana Mobile Seed Vault via the Mobile Wallet Adapter (MWA) protocol. Wallet authorization is restricted exclusively to the Seed Vault; third-party wallet apps are blocked at the application level.</p>
 
   <h2>Third-Party Services</h2>
-  <p>VaultMemo does not integrate any advertising, analytics, or tracking services. The app communicates with the following external services solely for blockchain operations and price data:</p>
+  <p>VaultMemo does not integrate advertising, analytics, or tracking services. It communicates with the following external services for blockchain operations and price data only:</p>
   <ul>
-    <li><strong>Solana RPC endpoints:</strong> <code>api.mainnet-beta.solana.com</code> (primary) and <code>mainnet.helius-rpc.com</code> (fallback) for submitting transactions and fetching wallet balances. Only your public wallet address is included in these requests. No personal data is transmitted.</li>
-    <li><strong>Jupiter Price API</strong> (<code>api.jup.ag</code>): Primary source for real-time SKR/USD price data used to calculate the memo save fee.</li>
-    <li><strong>CoinGecko API</strong> (<code>api.coingecko.com</code>): Fallback price data source used only when Jupiter is unavailable.</li>
-    <li><strong>Solscan</strong> (<code>solscan.io</code>): When you tap a transaction ID in the app, your device's browser opens the corresponding Solscan page. No data is transmitted by the app itself.</li>
+    <li><strong>Solana RPC:</strong> <code>api.mainnet-beta.solana.com</code> (primary), <code>mainnet.helius-rpc.com</code> (fallback) — transaction submission and balance queries. Only your public wallet address is included.</li>
+    <li><strong>Jupiter Price API</strong> (<code>api.jup.ag</code>): Real-time SKR/USD price for fee calculation.</li>
+    <li><strong>CoinGecko API</strong> (<code>api.coingecko.com</code>): Fallback price source.</li>
+    <li><strong>Solscan</strong> (<code>solscan.io</code>): Opened in your browser when you tap a TxID. No data is sent by the app itself.</li>
   </ul>
-  <p>No personal data is transmitted to any of these services. Price data displayed in the app is approximate and may differ from actual on-chain values.</p>
 
   <h2>Children's Privacy</h2>
-  <p>VaultMemo does not knowingly collect any data from anyone, including children under the age of 13.</p>
+  <p>VaultMemo does not knowingly collect any data from anyone, including children under 13.</p>
 
   <h2>Changes to This Policy</h2>
   <p>If this policy is updated, the new version will be published at this URL with a revised date.</p>
 
   <h2>Contact</h2>
-  <p>Questions? Reach out on X: <a href="https://x.com/i_naong">@i_naong</a></p>
+  <p>X: <a href="https://x.com/i_naong">@i_naong</a></p>
 </body>
 </html>
