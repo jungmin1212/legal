@@ -10,15 +10,18 @@
     .meta { color: #888; font-size: 0.9rem; margin-bottom: 40px; }
     h2 { font-size: 1.05rem; margin-top: 36px; }
     .box { background: #f8f8f8; border: 1px solid #e0e0e0; padding: 16px 20px; border-radius: 8px; font-size: 0.93rem; margin: 16px 0; }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.93rem; }
+    th { background: #f0f0f0; padding: 8px 12px; text-align: left; border: 1px solid #ddd; }
+    td { padding: 8px 12px; border: 1px solid #ddd; }
     a { color: #6366f1; }
   </style>
 </head>
 <body>
   <h1>End User License Agreement (EULA)</h1>
-  <p class="meta">App: VaultMemo v1.0 &nbsp;·&nbsp; Developer: no10messi.skr &nbsp;·&nbsp; Last updated: March 2026</p>
+  <p class="meta">App: VaultMemo v2 &nbsp;·&nbsp; Developer: no10messi.skr &nbsp;·&nbsp; Last updated: March 2026</p>
 
   <h2>License Grant</h2>
-  <p>By downloading and using VaultMemo, you are granted a limited, non-exclusive, non-transferable license to use this app on your personal device for the purpose of encrypting and storing personal memos locally on the Solana Seeker device.</p>
+  <p>By downloading and using VaultMemo, you are granted a limited, non-exclusive, non-transferable license to use this app on your personal Android device for the purpose of encrypting and storing personal memos on the Solana Seeker device.</p>
 
   <h2>Restrictions</h2>
   <ul>
@@ -27,130 +30,56 @@
     <li>You may not use the app for any unlawful purpose.</li>
   </ul>
 
-  <h2>Security Restrictions</h2>
-  <p>VaultMemo enforces the following security measures at the application level:</p>
+  <h2>Security Architecture</h2>
   <ul>
-    <li><strong>Seed Vault only:</strong> Wallet authorization is restricted exclusively to the Solana Mobile Seed Vault. Connections from third-party wallet apps (e.g., Phantom, Solflare) are blocked. This is a deliberate design decision to prevent unauthorized key derivation and transaction signing.</li>
-    <li><strong>Wallet-bound encryption key:</strong> Your AES-256 encryption key is deterministically derived from your Solana Seed Vault wallet signature each time it is needed. No key is stored on the device. Anyone with access to your seed phrase can recreate the encryption key and decrypt your files on any device. You are solely responsible for protecting your seed phrase.</li>
-    <li><strong>Session lock:</strong> The encryption key is cleared from memory whenever the app enters the background or the screen is turned off. Biometric re-authentication is required to resume.</li>
+    <li><strong>Seed Vault exclusive:</strong> VaultMemo is restricted exclusively to the Solana Mobile Seed Vault. Third-party wallet apps are blocked at the application level.</li>
+    <li><strong>Wallet-bound encryption key:</strong> Your AES-256 encryption key is deterministically derived from a one-time wallet signature, then stored in the Android Keystore (TEE) protected by biometric authentication. You are solely responsible for protecting your seed phrase.</li>
+    <li><strong>Session lock:</strong> The encryption session is cleared whenever the app enters the background. Biometric re-authentication is required to resume.</li>
   </ul>
-  <p>These restrictions are non-configurable and exist solely for user protection.</p>
 
   <h2>Payment Terms</h2>
-  <p>Each memo save operation requires a one-time payment of approximately $0.75 USD in SKR (Seeker Rewards Token) on the Solana blockchain. This fee covers the on-chain hash recording via Solana Pay. The exact SKR amount is calculated at the time of saving based on the real-time SKR/USD market price fetched from Jupiter Price API or CoinGecko.</p>
+  <p>Each save operation is billed based on the plaintext byte size. Fees are denominated in SKR (Seeker Rewards Token) at the real-time SKR/USD price fetched from Jupiter Price API or CoinGecko.</p>
+  <table>
+    <tr><th>Tier</th><th>Size</th><th>Fee (USD in SKR)</th></tr>
+    <tr><td>Trial</td><td>0 – 100 B</td><td>Free</td></tr>
+    <tr><td>Seed</td><td>101 – 512 B</td><td>$0.80</td></tr>
+    <tr><td>Basic</td><td>513 – 1,024 B</td><td>$1.20</td></tr>
+    <tr><td>Standard</td><td>1,025 – 1,536 B</td><td>$1.40</td></tr>
+    <tr><td>Max</td><td>1,537 – 2,048 B</td><td>$1.50</td></tr>
+    <tr><td>Limit</td><td>Over 2,048 B</td><td>Not supported</td></tr>
+  </table>
   <ul>
-    <li>All SKR payments are processed directly on the Solana blockchain and are irreversible once confirmed.</li>
-    <li>The developer is not responsible for any losses arising from price volatility between the time of price display and transaction confirmation.</li>
-    <li>No refunds are issued for confirmed on-chain transactions.</li>
-    <li>The user is responsible for maintaining sufficient SKR balance before initiating a save operation.</li>
+    <li>All SKR payments are irreversible once confirmed on-chain.</li>
+    <li>No refunds are issued for confirmed transactions.</li>
+    <li>The developer is not responsible for losses from price volatility between display and confirmation.</li>
+    <li><strong>Solana network fees are the user's responsibility.</strong></li>
   </ul>
 
   <h2>Storage Permissions</h2>
-  <p>VaultMemo requests storage permissions for the following purposes:</p>
-  <ul>
-    <li><strong>Encrypted file storage:</strong> Saving <code>.enc</code> files to <code>Downloads/VaultMemo/</code> on your device when you tap "Encrypt &amp; Save".</li>
-    <li><strong>Internal document directory:</strong> Maintaining a file listing in the app's internal storage (<code>DocumentDir/VaultMemo/</code>) for browse functionality. This directory is cleared when the app is uninstalled.</li>
-  </ul>
-  <p>Storage is accessed only while the app is in the foreground. No files are written by background services.</p>
+  <p>VaultMemo saves encrypted <code>.vam</code> files to <code>Downloads/VaultMemo/</code> only when the user taps "Encrypt &amp; Save". No background writes occur.</p>
 
   <h2>Data Loss Disclaimer</h2>
-  <p>Encrypted <code>.enc</code> files saved to device storage are the user's sole responsibility. The developer is not liable for data loss resulting from:</p>
-  <ul>
-    <li>Device failure, loss, or damage</li>
-    <li>App uninstallation: Clears the internal document directory. However, encrypted .enc files saved to the public <code>Downloads/VaultMemo/</code> folder will persist on your device. You can manually re-import these files after reinstallation.</li>
-    <li>Loss of the Seed Vault seed phrase (renders decryption permanently impossible on any device)</li>
-    <li>Loss or compromise of the Seed Vault seed phrase (any person with the seed phrase can decrypt your files on any device)</li>
-    <li>User deletion of backup files</li>
-  </ul>
-  <p>It is strongly recommended to maintain encrypted file backups in multiple locations (email, cloud storage, external drive).</p>
+  <p>The developer is not liable for data loss resulting from: device failure; app uninstallation (note: <code>.vam</code> files in <code>Downloads/VaultMemo/</code> persist and can be re-imported); loss or compromise of the wallet seed phrase; or user deletion of backup files. Maintain backups in multiple locations.</p>
 
   <h2>Open Source Components</h2>
-  <p>VaultMemo is built on top of the following open source technologies:</p>
-
-  <div class="box">
-    <strong>Solana Pay</strong><br/>
-    Licensed under the Apache License 2.0<br/>
-    <a href="https://github.com/solana-labs/solana-pay" target="_blank">github.com/solana-labs/solana-pay</a>
-  </div>
-
-  <div class="box">
-    <strong>Solana Mobile Stack / Seed Vault SDK</strong><br/>
-    Licensed under the Apache License 2.0<br/>
-    <a href="https://github.com/solana-mobile/seed-vault-sdk" target="_blank">github.com/solana-mobile/seed-vault-sdk</a>
-  </div>
-
-  <div class="box">
-    <strong>Mobile Wallet Adapter (MWA)</strong><br/>
-    Licensed under the Apache License 2.0<br/>
-    <a href="https://github.com/solana-mobile/mobile-wallet-adapter" target="_blank">github.com/solana-mobile/mobile-wallet-adapter</a>
-  </div>
-
-  <div class="box">
-    <strong>Solana Web3.js</strong><br/>
-    Licensed under the MIT License<br/>
-    <a href="https://github.com/solana-labs/solana-web3.js" target="_blank">github.com/solana-labs/solana-web3.js</a>
-  </div>
-
-  <div class="box">
-    <strong>SPL Token (Solana Program Library)</strong><br/>
-    Licensed under the Apache License 2.0<br/>
-    <a href="https://github.com/solana-labs/solana-program-library" target="_blank">github.com/solana-labs/solana-program-library</a>
-  </div>
-
-  <div class="box">
-    <strong>react-native-quick-crypto</strong><br/>
-    Licensed under the MIT License<br/>
-    Used for AES-256-GCM encryption/decryption and SHA-256 hashing.<br/>
-    <a href="https://github.com/margelo/react-native-quick-crypto" target="_blank">github.com/margelo/react-native-quick-crypto</a>
-  </div>
-
-  <div class="box">
-    <strong>react-native-keychain</strong><br/>
-    Licensed under the MIT License<br/>
-    Used for storing the encryption key in Android Keystore (TEE) with biometric binding.<br/>
-    <a href="https://github.com/oblador/react-native-keychain" target="_blank">github.com/oblador/react-native-keychain</a>
-  </div>
-
-  <div class="box">
-    <strong>react-native-blob-util</strong><br/>
-    Licensed under the MIT License<br/>
-    Used for reading and writing encrypted files to device storage and MediaStore.<br/>
-    <a href="https://github.com/RonRadtke/react-native-blob-util" target="_blank">github.com/RonRadtke/react-native-blob-util</a>
-  </div>
-
-  <div class="box">
-    <strong>react-native-document-picker</strong><br/>
-    Licensed under the MIT License<br/>
-    Used for importing encrypted files from device storage.<br/>
-    <a href="https://github.com/rnmods/react-native-document-picker" target="_blank">github.com/rnmods/react-native-document-picker</a>
-  </div>
-
-  <div class="box">
-    <strong>react-native-share</strong><br/>
-    Licensed under the MIT License<br/>
-    Used for sharing encrypted files via the Android share sheet.<br/>
-    <a href="https://github.com/react-native-share/react-native-share" target="_blank">github.com/react-native-share/react-native-share</a>
-  </div>
-
-  <div class="box">
-    <strong>react-native-linear-gradient</strong><br/>
-    Licensed under the MIT License<br/>
-    <a href="https://github.com/react-native-linear-gradient/react-native-linear-gradient" target="_blank">github.com/react-native-linear-gradient/react-native-linear-gradient</a>
-  </div>
-
-  <h2>Promotional Campaigns &amp; External Rewards</h2>
-  <p>The Developer may, at its sole discretion, conduct promotional campaigns via external channels (e.g., X/Twitter). Participation in such campaigns is entirely voluntary and does not create any contractual obligation or legal rights for the user. Reward criteria, distribution methods, and eligibility are governed exclusively by the specific announcements provided on the respective external channels. The Developer reserves the right to modify, suspend, or terminate any promotional campaign at any time without prior notice.</p>
-
-  <h2>Disclaimer</h2>
-  <p>VaultMemo is provided "as is" without warranty of any kind. The developer is not responsible for any loss of data or funds resulting from user error, network failure, blockchain congestion, or third-party service issues. All transactions on the Solana blockchain are irreversible. The SKR amount displayed before confirmation is an estimate based on real-time price data and may differ slightly from the actual on-chain amount due to price volatility and API update intervals.</p>
+  <div class="box"><strong>Solana Pay</strong> — Apache 2.0 &nbsp;·&nbsp; <a href="https://github.com/solana-labs/solana-pay">github.com/solana-labs/solana-pay</a></div>
+  <div class="box"><strong>Solana Mobile Stack / Seed Vault SDK</strong> — Apache 2.0 &nbsp;·&nbsp; <a href="https://github.com/solana-mobile/seed-vault-sdk">github.com/solana-mobile/seed-vault-sdk</a></div>
+  <div class="box"><strong>Mobile Wallet Adapter (MWA)</strong> — Apache 2.0 &nbsp;·&nbsp; <a href="https://github.com/solana-mobile/mobile-wallet-adapter">github.com/solana-mobile/mobile-wallet-adapter</a></div>
+  <div class="box"><strong>Solana Web3.js</strong> — MIT &nbsp;·&nbsp; <a href="https://github.com/solana-labs/solana-web3.js">github.com/solana-labs/solana-web3.js</a></div>
+  <div class="box"><strong>SPL Token</strong> — Apache 2.0 &nbsp;·&nbsp; <a href="https://github.com/solana-labs/solana-program-library">github.com/solana-labs/solana-program-library</a></div>
+  <div class="box"><strong>react-native-quick-crypto</strong> — MIT &nbsp;·&nbsp; AES-256-GCM + SHA-256 &nbsp;·&nbsp; <a href="https://github.com/margelo/react-native-quick-crypto">github.com/margelo/react-native-quick-crypto</a></div>
+  <div class="box"><strong>react-native-keychain</strong> — MIT &nbsp;·&nbsp; Android Keystore / biometric &nbsp;·&nbsp; <a href="https://github.com/oblador/react-native-keychain">github.com/oblador/react-native-keychain</a></div>
+  <div class="box"><strong>react-native-blob-util</strong> — MIT &nbsp;·&nbsp; File I/O / MediaStore &nbsp;·&nbsp; <a href="https://github.com/RonRadtke/react-native-blob-util">github.com/RonRadtke/react-native-blob-util</a></div>
+  <div class="box"><strong>react-native-document-picker</strong> — MIT &nbsp;·&nbsp; File import &nbsp;·&nbsp; <a href="https://github.com/rnmods/react-native-document-picker">github.com/rnmods/react-native-document-picker</a></div>
+  <div class="box"><strong>react-native-share</strong> — MIT &nbsp;·&nbsp; Share sheet &nbsp;·&nbsp; <a href="https://github.com/react-native-share/react-native-share">github.com/react-native-share/react-native-share</a></div>
 
   <h2>No Legal Guarantee</h2>
-  <p>The on-chain hash record created by VaultMemo is a cryptographic record only. VaultMemo does not provide legal verification, notarization, certified timestamping, or any legally recognized certification service. The transaction record on the Solana blockchain does not constitute legally admissible evidence in any jurisdiction. Users are solely responsible for how they interpret, rely upon, or present any transaction record generated by this app. The developer makes no representation that any VaultMemo transaction will be recognized, accepted, or admitted in any legal, regulatory, or administrative proceeding.</p>
+  <p>The on-chain hash record is a cryptographic record only and does not constitute legal verification, notarization, or legally admissible evidence in any jurisdiction.</p>
 
-  <h2>Termination</h2>
-  <p>This license is effective until terminated. It will terminate automatically if you fail to comply with any of the terms above.</p>
+  <h2>Disclaimer</h2>
+  <p>VaultMemo is provided "as is" without warranty. The developer is not responsible for data or fund loss from user error, network failure, or third-party service issues.</p>
 
   <h2>Contact</h2>
-  <p>Questions? Reach out on X: <a href="https://x.com/i_naong">@i_naong</a></p>
+  <p>X: <a href="https://x.com/i_naong">@i_naong</a></p>
 </body>
 </html>
