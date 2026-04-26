@@ -3,283 +3,82 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>License – VaultMemo v1.2</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet"/>
+  <title>License – VaultMemo</title>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      background: #07101f;
-      color: #cfe0ff;
-      font-family: 'Inter', -apple-system, sans-serif;
-      font-weight: 400;
-      line-height: 1.75;
-      min-height: 100vh;
-    }
-
-    .wrapper {
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 60px 24px 80px;
-    }
-
-    .header {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 48px;
-    }
-    .logo-mark {
-      width: 44px; height: 44px;
-      border-radius: 12px;
-      overflow: hidden;
-      flex-shrink: 0;
-    }
-    .logo-mark img { width: 44px; height: 44px; display: block; }
-    .header-text h1 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.5rem;
-      color: #cfe0ff;
-      letter-spacing: -0.02em;
-    }
-    .header-text .meta {
-      font-size: 0.82rem;
-      color: #7a95c4;
-      margin-top: 2px;
-    }
-
-    h2 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #43e880;
-      margin: 44px 0 12px;
-    }
-
-    p { font-size: 0.95rem; color: #cfe0ff; margin-bottom: 12px; }
-
-    ul { padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
-    ul li {
-      padding-left: 18px;
-      position: relative;
-      font-size: 0.93rem;
-      color: #7a95c4;
-    }
-    ul li::before {
-      content: '—';
-      position: absolute;
-      left: 0;
-      color: #43e880;
-      font-size: 0.8rem;
-      line-height: 1.75;
-    }
-    ul li strong { color: #cfe0ff; }
-
-    code {
-      font-family: 'Courier New', monospace;
-      font-size: 0.85em;
-      background: #0d1828;
-      border: 1px solid #1e3050;
-      border-radius: 4px;
-      padding: 1px 6px;
-      color: #43e880;
-    }
-
-    .table-wrap { overflow-x: auto; margin: 16px 0 20px; border-radius: 12px; border: 1px solid #1e3050; }
-    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
-    thead tr { background: #112035; }
-    th {
-      padding: 10px 14px;
-      text-align: left;
-      color: #7a95c4;
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
-      font-size: 0.78rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      border-bottom: 1px solid #1e3050;
-    }
-    td { padding: 10px 14px; border-bottom: 1px solid #182c48; color: #cfe0ff; }
-    tbody tr:last-child td { border-bottom: none; }
-    tbody tr:hover { background: #0d1828; }
-    td.free { color: #43e880; font-weight: 600; }
-    td.muted { color: #3a5278; }
-
-    .card {
-      background: #0d1828;
-      border: 1px solid #1e3050;
-      border-radius: 10px;
-      padding: 12px 16px;
-      margin-bottom: 8px;
-      font-size: 0.88rem;
-      color: #7a95c4;
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
-    }
-    .card::before {
-      content: '';
-      width: 6px; height: 6px;
-      background: #43e880;
-      border-radius: 50%;
-      flex-shrink: 0;
-      margin-top: 6px;
-    }
-    .card strong { color: #cfe0ff; }
-    .card a { color: #43e880; text-decoration: none; font-size: 0.82rem; margin-left: 4px; }
-    .card a:hover { text-decoration: underline; }
-
-    .notice {
-      background: #091628;
-      border-left: 3px solid #43e880;
-      border-radius: 0 10px 10px 0;
-      padding: 14px 18px;
-      margin: 16px 0;
-      font-size: 0.9rem;
-      color: #7a95c4;
-    }
-    .notice strong { color: #cfe0ff; }
-
-    a { color: #43e880; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    .divider { border: none; border-top: 1px solid #1e3050; margin: 44px 0; }
-
-    .footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid #1e3050; font-size: 0.82rem; color: #3a5278; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 680px; margin: 60px auto; padding: 0 24px; color: #1a1a1a; line-height: 1.7; }
+    h1 { font-size: 1.6rem; margin-bottom: 4px; }
+    .meta { color: #888; font-size: 0.9rem; margin-bottom: 40px; }
+    h2 { font-size: 1.05rem; margin-top: 36px; }
+    .box { background: #f8f8f8; border: 1px solid #e0e0e0; padding: 16px 20px; border-radius: 8px; font-size: 0.93rem; margin: 16px 0; }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.93rem; }
+    th { background: #f0f0f0; padding: 8px 12px; text-align: left; border: 1px solid #ddd; }
+    td { padding: 8px 12px; border: 1px solid #ddd; }
+    a { color: #6366f1; }
   </style>
 </head>
 <body>
-  <div class="wrapper">
+  <h1>End User License Agreement (EULA)</h1>
+  <p class="meta">App: VaultMemo v2 &nbsp;·&nbsp; Developer: no10messi.skr &nbsp;·&nbsp; Last updated: March 2026</p>
 
-    <div class="header">
-      <div class="logo-mark">
-        <img src="ic_launcher.png" alt="VaultMemo"/>
-      </div>
-      <div class="header-text">
-        <h1>End User License Agreement</h1>
-        <div class="meta">VaultMemo v1.2 &nbsp;·&nbsp; no10messi.skr &nbsp;·&nbsp; Last updated: March 2026</div>
-      </div>
-    </div>
+  <h2>License Grant</h2>
+  <p>By downloading and using VaultMemo, you are granted a limited, non-exclusive, non-transferable license to use this app on your personal Android device for the purpose of encrypting and storing personal memos on the Solana Seeker device.</p>
 
-    <h2>License Grant</h2>
-    <p>By downloading and using VaultMemo, you are granted a limited, non-exclusive, non-transferable license to use this app on your personal Android device for the purpose of encrypting and storing personal memos on the Solana Seeker device.</p>
+  <h2>Restrictions</h2>
+  <ul>
+    <li>You may not copy, reverse-engineer, decompile, or disassemble the app.</li>
+    <li>You may not distribute, sublicense, rent, or resell the app.</li>
+    <li>You may not use the app for any unlawful purpose.</li>
+  </ul>
 
-    <h2>Restrictions</h2>
-    <ul>
-      <li>You may not copy, reverse-engineer, decompile, or disassemble the app.</li>
-      <li>You may not distribute, sublicense, rent, or resell the app.</li>
-      <li>You may not use the app for any unlawful purpose.</li>
-    </ul>
+  <h2>Security Architecture</h2>
+  <ul>
+    <li><strong>Seed Vault exclusive:</strong> VaultMemo is restricted exclusively to the Solana Mobile Seed Vault. Third-party wallet apps are blocked at the application level.</li>
+    <li><strong>Wallet-bound encryption key:</strong> Your AES-256 encryption key is deterministically derived from a one-time wallet signature, then stored in the Android Keystore (TEE) protected by biometric authentication. You are solely responsible for protecting your seed phrase.</li>
+    <li><strong>Session lock:</strong> The encryption session is cleared whenever the app enters the background. Biometric re-authentication is required to resume.</li>
+  </ul>
 
-    <h2>Security Architecture</h2>
-    <ul>
-      <li><strong>Seed Vault exclusive:</strong> VaultMemo is restricted exclusively to the Solana Mobile Seed Vault. Third-party wallet apps are blocked at the application level.</li>
-      <li><strong>Wallet-bound encryption key:</strong> Your AES-256 encryption key is deterministically derived from a one-time wallet signature, then stored in the Android Keystore (TEE) protected by biometric authentication. You are solely responsible for protecting your seed phrase.</li>
-      <li><strong>Session lock:</strong> The encryption session is cleared whenever the app enters the background. Biometric re-authentication is required to resume.</li>
-    </ul>
+  <h2>Payment Terms</h2>
+  <p>Each save operation is billed based on the plaintext byte size. Fees are denominated in SKR (Seeker Rewards Token) at the real-time SKR/USD price fetched from Jupiter Price API or CoinGecko.</p>
+  <table>
+    <tr><th>Tier</th><th>Size</th><th>Fee (USD in SKR)</th></tr>
+    <tr><td>Trial</td><td>0 – 100 B</td><td>Free</td></tr>
+    <tr><td>Seed</td><td>101 – 512 B</td><td>$0.80</td></tr>
+    <tr><td>Basic</td><td>513 – 1,024 B</td><td>$1.20</td></tr>
+    <tr><td>Standard</td><td>1,025 – 1,536 B</td><td>$1.40</td></tr>
+    <tr><td>Max</td><td>1,537 – 2,048 B</td><td>$1.50</td></tr>
+    <tr><td>Limit</td><td>Over 2,048 B</td><td>Not supported</td></tr>
+  </table>
+  <ul>
+    <li>All SKR payments are irreversible once confirmed on-chain.</li>
+    <li>No refunds are issued for confirmed transactions.</li>
+    <li>The developer is not responsible for losses from price volatility between display and confirmation.</li>
+  </ul>
 
-    <h2>Payment Terms</h2>
-    <p>Each save operation is billed based on the plaintext byte size. Fees are denominated in SKR (Seeker Rewards Token) at the real-time SKR/USD price fetched from Jupiter Price API or CoinGecko.</p>
+  <h2>Storage Permissions</h2>
+  <p>VaultMemo saves encrypted <code>.vam</code> files to <code>Downloads/VaultMemo/</code> only when the user taps "Encrypt &amp; Save". No background writes occur.</p>
 
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Tier</th>
-            <th>Size</th>
-            <th>Fee (USD in SKR)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Trial</td><td>0 – 100 B</td><td class="free">Free</td></tr>
-          <tr><td>Seed</td><td>101 – 512 B</td><td>$0.80</td></tr>
-          <tr><td>Basic</td><td>513 – 1,024 B</td><td>$1.20</td></tr>
-          <tr><td>Standard</td><td>1,025 – 1,536 B</td><td>$1.40</td></tr>
-          <tr><td>Max</td><td>1,537 – 2,048 B</td><td>$1.50</td></tr>
-          <tr><td class="muted">Limit</td><td class="muted">Over 2,048 B</td><td class="muted">Not supported</td></tr>
-        </tbody>
-      </table>
-    </div>
+  <h2>Data Loss Disclaimer</h2>
+  <p>The developer is not liable for data loss resulting from: device failure; app uninstallation (note: <code>.vam</code> files in <code>Downloads/VaultMemo/</code> persist and can be re-imported); loss or compromise of the wallet seed phrase; or user deletion of backup files. Maintain backups in multiple locations.</p>
 
-    <ul>
-      <li>All SKR payments are irreversible once confirmed on-chain.</li>
-      <li>No refunds are issued for confirmed transactions.</li>
-      <li>The developer is not responsible for losses from price volatility between display and confirmation.</li>
-    </ul>
+  <h2>Open Source Components</h2>
+  <div class="box"><strong>Solana Pay</strong> — Apache 2.0 &nbsp;·&nbsp; <a href="https://github.com/solana-labs/solana-pay">github.com/solana-labs/solana-pay</a></div>
+  <div class="box"><strong>Solana Mobile Stack / Seed Vault SDK</strong> — Apache 2.0 &nbsp;·&nbsp; <a href="https://github.com/solana-mobile/seed-vault-sdk">github.com/solana-mobile/seed-vault-sdk</a></div>
+  <div class="box"><strong>Mobile Wallet Adapter (MWA)</strong> — Apache 2.0 &nbsp;·&nbsp; <a href="https://github.com/solana-mobile/mobile-wallet-adapter">github.com/solana-mobile/mobile-wallet-adapter</a></div>
+  <div class="box"><strong>Solana Web3.js</strong> — MIT &nbsp;·&nbsp; <a href="https://github.com/solana-labs/solana-web3.js">github.com/solana-labs/solana-web3.js</a></div>
+  <div class="box"><strong>SPL Token</strong> — Apache 2.0 &nbsp;·&nbsp; <a href="https://github.com/solana-labs/solana-program-library">github.com/solana-labs/solana-program-library</a></div>
+  <div class="box"><strong>react-native-quick-crypto</strong> — MIT &nbsp;·&nbsp; AES-256-GCM + SHA-256 &nbsp;·&nbsp; <a href="https://github.com/margelo/react-native-quick-crypto">github.com/margelo/react-native-quick-crypto</a></div>
+  <div class="box"><strong>react-native-keychain</strong> — MIT &nbsp;·&nbsp; Android Keystore / biometric &nbsp;·&nbsp; <a href="https://github.com/oblador/react-native-keychain">github.com/oblador/react-native-keychain</a></div>
+  <div class="box"><strong>react-native-blob-util</strong> — MIT &nbsp;·&nbsp; File I/O / MediaStore &nbsp;·&nbsp; <a href="https://github.com/RonRadtke/react-native-blob-util">github.com/RonRadtke/react-native-blob-util</a></div>
+  <div class="box"><strong>react-native-document-picker</strong> — MIT &nbsp;·&nbsp; File import &nbsp;·&nbsp; <a href="https://github.com/rnmods/react-native-document-picker">github.com/rnmods/react-native-document-picker</a></div>
+  <div class="box"><strong>react-native-share</strong> — MIT &nbsp;·&nbsp; Share sheet &nbsp;·&nbsp; <a href="https://github.com/react-native-share/react-native-share">github.com/react-native-share/react-native-share</a></div>
 
-    <h2>In-App File Management</h2>
-    <p>VaultMemo v1.2 includes the following local file management features. All operations are performed on-device only and do not require additional payment:</p>
-    <ul>
-      <li><strong>File list:</strong> View all encrypted <code>.vam</code> files saved in the app's internal storage, with search, sort by date/size/name.</li>
-      <li><strong>Decrypt from list:</strong> Tap any listed file to decrypt and view its contents. Biometric authentication is required.</li>
-      <li><strong>Rename:</strong> Rename any <code>.vam</code> file within the app's internal storage. Free of charge.</li>
-      <li><strong>Delete:</strong> Permanently delete a <code>.vam</code> file from the app's internal storage. This action is irreversible. Files in <code>Downloads/VaultMemo/</code> are not affected by in-app deletion.</li>
-    </ul>
+  <h2>No Legal Guarantee</h2>
+  <p>The on-chain hash record is a cryptographic record only and does not constitute legal verification, notarization, or legally admissible evidence in any jurisdiction.</p>
 
-    <h2>On-Chain Integrity Verification</h2>
-    <p>VaultMemo v1.2 provides an optional "Verify On-Chain" feature accessible from the decrypted file view. This feature:</p>
-    <ul>
-      <li>Fetches the transaction record from the Solana blockchain using the TxID embedded in the file.</li>
-      <li>Compares the on-chain hash prefix (first 16 hex characters of SHA-256) with a locally computed hash of the encrypted file content.</li>
-      <li>Returns one of the following results: Match (integrity confirmed), Mismatch (file may be altered), No Memo Found, Transaction Not Found, or Error.</li>
-      <li>Requires an active internet connection and is subject to Solana RPC availability. VaultMemo uses a three-endpoint fallback chain: <code>rpc.ankr.com/solana</code> (primary), <code>api.mainnet-beta.solana.com</code> (secondary), <code>mainnet.helius-rpc.com</code> (last resort).</li>
-      <li>Verification is free of charge. Solana network fees do not apply to read-only RPC queries.</li>
-    </ul>
-    <div class="notice"><strong>Limitation:</strong> The on-chain record is a cryptographic proof only and does not constitute legal verification, notarization, or legally admissible evidence in any jurisdiction.</div>
+  <h2>Disclaimer</h2>
+  <p>VaultMemo is provided "as is" without warranty. The developer is not responsible for data or fund loss from user error, network failure, or third-party service issues.</p>
 
-    <h2>Encryption Certificate</h2>
-    <p>VaultMemo v1.2 allows users to generate a shareable encryption certificate image after saving or decrypting a memo. The certificate:</p>
-    <ul>
-      <li>Is generated entirely on-device as a PNG image.</li>
-      <li>Contains: file name, truncated wallet address, truncated TxID, encryption tier, algorithm, byte size, and timestamp.</li>
-      <li>Does not contain your memo content, full wallet address, or private keys.</li>
-      <li>Is free of charge — no SKR payment is required.</li>
-      <li>Can be shared via the Android system share sheet to any app (messaging, email, cloud storage, etc.).</li>
-      <li>Available in English (default) with a toggle to the app's current language.</li>
-    </ul>
-    <div class="notice"><strong>Disclaimer:</strong> The certificate is an informational document only and does not constitute legal proof of encryption, authorship, or timestamp beyond the cryptographic record on the Solana blockchain.</div>
-
-    <h2>Storage Permissions</h2>
-    <p>VaultMemo saves encrypted <code>.vam</code> files to two locations when the user taps "Encrypt &amp; Save":</p>
-    <ul>
-      <li><code>DocumentDir/VaultMemo/</code> — app-internal storage for the in-app file list (cleared on app uninstall)</li>
-      <li><code>Downloads/VaultMemo/</code> via MediaStore — permanent storage accessible via the file manager (persists after app uninstall)</li>
-    </ul>
-    <p>No background writes occur. All file operations are user-initiated.</p>
-
-    <h2>Data Loss Disclaimer</h2>
-    <p>The developer is not liable for data loss resulting from: device failure; app uninstallation (note: <code>.vam</code> files in <code>Downloads/VaultMemo/</code> persist and can be re-imported; files in <code>DocumentDir/VaultMemo/</code> are deleted on uninstall); loss or compromise of the wallet seed phrase; user deletion of backup files; or in-app deletion of files from the file list. Maintain backups in multiple locations.</p>
-
-    <h2>Open Source Components</h2>
-    <div class="card"><strong>Solana Pay</strong> — Apache 2.0 &nbsp;<a href="https://github.com/solana-labs/solana-pay">github.com/solana-labs/solana-pay</a></div>
-    <div class="card"><strong>Solana Mobile Stack / Seed Vault SDK</strong> — Apache 2.0 &nbsp;<a href="https://github.com/solana-mobile/seed-vault-sdk">github.com/solana-mobile/seed-vault-sdk</a></div>
-    <div class="card"><strong>Mobile Wallet Adapter (MWA)</strong> — Apache 2.0 &nbsp;<a href="https://github.com/solana-mobile/mobile-wallet-adapter">github.com/solana-mobile/mobile-wallet-adapter</a></div>
-    <div class="card"><strong>Solana Web3.js</strong> — MIT &nbsp;<a href="https://github.com/solana-labs/solana-web3.js">github.com/solana-labs/solana-web3.js</a></div>
-    <div class="card"><strong>SPL Token</strong> — Apache 2.0 &nbsp;<a href="https://github.com/solana-labs/solana-program-library">github.com/solana-labs/solana-program-library</a></div>
-    <div class="card"><strong>react-native-quick-crypto</strong> — MIT &nbsp;· AES-256-GCM + SHA-256 &nbsp;<a href="https://github.com/margelo/react-native-quick-crypto">github.com/margelo/react-native-quick-crypto</a></div>
-    <div class="card"><strong>react-native-keychain</strong> — MIT &nbsp;· Android Keystore / biometric &nbsp;<a href="https://github.com/oblador/react-native-keychain">github.com/oblador/react-native-keychain</a></div>
-    <div class="card"><strong>react-native-blob-util</strong> — MIT &nbsp;· File I/O / MediaStore &nbsp;<a href="https://github.com/RonRadtke/react-native-blob-util">github.com/RonRadtke/react-native-blob-util</a></div>
-    <div class="card"><strong>react-native-document-picker</strong> — MIT &nbsp;· File import &nbsp;<a href="https://github.com/rnmods/react-native-document-picker">github.com/rnmods/react-native-document-picker</a></div>
-    <div class="card"><strong>react-native-share</strong> — MIT &nbsp;· Share sheet &nbsp;<a href="https://github.com/react-native-share/react-native-share">github.com/react-native-share/react-native-share</a></div>
-    <div class="card"><strong>react-native-view-shot</strong> — MIT &nbsp;· Certificate image capture &nbsp;<a href="https://github.com/gre/react-native-view-shot">github.com/gre/react-native-view-shot</a></div>
-    <div class="card"><strong>Firebase Remote Config</strong> — Google &nbsp;· Dynamic configuration &nbsp;<a href="https://firebase.google.com">firebase.google.com</a></div>
-
-    <h2>No Legal Guarantee</h2>
-    <div class="notice">The on-chain hash record is a cryptographic record only and does not constitute legal verification, notarization, or legally admissible evidence in any jurisdiction. The encryption certificate is an informational document only.</div>
-
-    <h2>Disclaimer</h2>
-    <p>VaultMemo is provided "as is" without warranty. The developer is not responsible for data or fund loss from user error, network failure, or third-party service issues.</p>
-
-    <hr class="divider"/>
-
-    <div class="footer">
-      Contact &nbsp;·&nbsp; X: <a href="https://x.com/i_naong">@i_naong</a>
-    </div>
-
-  </div>
+  <h2>Contact</h2>
+  <p>X: <a href="https://x.com/i_naong">@i_naong</a></p>
 </body>
 </html>
