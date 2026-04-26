@@ -3,70 +3,291 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Privacy Policy – VaultMemo</title>
+  <title>Privacy Policy – VaultMemo v1.2</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet"/>
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 680px; margin: 60px auto; padding: 0 24px; color: #1a1a1a; line-height: 1.7; }
-    h1 { font-size: 1.6rem; margin-bottom: 4px; }
-    .meta { color: #888; font-size: 0.9rem; margin-bottom: 40px; }
-    h2 { font-size: 1.05rem; margin-top: 36px; }
-    .highlight { background: #f0faf0; border-left: 3px solid #22c55e; padding: 12px 16px; margin: 20px 0; border-radius: 0 6px 6px 0; font-size: 0.95rem; }
-    a { color: #6366f1; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #07101f;
+      color: #cfe0ff;
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-weight: 400;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    .wrapper {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 48px;
+    }
+    .logo-mark {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .logo-mark img { width: 44px; height: 44px; display: block; }
+    .header-text h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem;
+      color: #cfe0ff;
+      letter-spacing: -0.02em;
+    }
+    .header-text .meta {
+      font-size: 0.82rem;
+      color: #7a95c4;
+      margin-top: 2px;
+    }
+
+    .hero {
+      background: #091628;
+      border: 1px solid #1e3050;
+      border-left: 3px solid #43e880;
+      border-radius: 0 12px 12px 0;
+      padding: 18px 22px;
+      margin-bottom: 44px;
+      font-size: 0.95rem;
+      color: #7a95c4;
+      line-height: 1.65;
+    }
+    .hero strong { color: #43e880; }
+
+    h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #43e880;
+      margin: 44px 0 12px;
+    }
+
+    p { font-size: 0.95rem; color: #cfe0ff; margin-bottom: 12px; }
+
+    ul { padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+    ul li {
+      padding-left: 18px;
+      position: relative;
+      font-size: 0.93rem;
+      color: #7a95c4;
+    }
+    ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: #43e880;
+      font-size: 0.8rem;
+      line-height: 1.75;
+    }
+    ul li strong { color: #cfe0ff; }
+
+    code {
+      font-family: 'Courier New', monospace;
+      font-size: 0.85em;
+      background: #0d1828;
+      border: 1px solid #1e3050;
+      border-radius: 4px;
+      padding: 1px 6px;
+      color: #43e880;
+    }
+
+    .service-card {
+      background: #0d1828;
+      border: 1px solid #1e3050;
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .service-card .service-name {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #cfe0ff;
+      margin-bottom: 4px;
+    }
+    .service-card .service-desc {
+      font-size: 0.88rem;
+      color: #7a95c4;
+      line-height: 1.6;
+    }
+    .service-card a { color: #43e880; text-decoration: none; }
+    .service-card a:hover { text-decoration: underline; }
+    .tag {
+      display: inline-block;
+      background: #112035;
+      border: 1px solid #1e3050;
+      border-radius: 6px;
+      padding: 1px 8px;
+      font-size: 0.75rem;
+      color: #7a95c4;
+      margin-right: 4px;
+      margin-bottom: 4px;
+    }
+
+    .notice {
+      background: #091628;
+      border-left: 3px solid #43e880;
+      border-radius: 0 10px 10px 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: 0.9rem;
+      color: #7a95c4;
+    }
+    .notice strong { color: #cfe0ff; }
+
+    a { color: #43e880; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .divider { border: none; border-top: 1px solid #1e3050; margin: 44px 0; }
+
+    .footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid #1e3050; font-size: 0.82rem; color: #3a5278; }
   </style>
 </head>
 <body>
-  <h1>Privacy Policy</h1>
-  <p class="meta">App: VaultMemo v2 &nbsp;·&nbsp; Developer: no10messi.skr &nbsp;·&nbsp; Last updated: March 2026</p>
+  <div class="wrapper">
 
-  <div class="highlight">
-    VaultMemo is a local-first, privacy-focused encrypted memo app. We do not operate any proprietary servers. Your memo content is never transmitted to any server or recorded on the blockchain. Only a cryptographic hash fingerprint and transaction metadata are recorded on-chain.
+    <div class="header">
+      <div class="logo-mark">
+        <img src="ic_launcher.png" alt="VaultMemo"/>
+      </div>
+      <div class="header-text">
+        <h1>Privacy Policy</h1>
+        <div class="meta">VaultMemo v1.2 &nbsp;·&nbsp; no10messi.skr &nbsp;·&nbsp; Last updated: March 2026</div>
+      </div>
+    </div>
+
+    <div class="hero">
+      <strong>Local-first. Zero servers.</strong><br/>
+      VaultMemo does not operate any proprietary servers. Your memo content is never transmitted to any server or recorded on the blockchain. Only a cryptographic hash fingerprint and transaction metadata are recorded on-chain.
+    </div>
+
+    <h2>Data Collection</h2>
+    <p>VaultMemo collects no personal information. No account or registration is required.</p>
+
+    <h2>Local Data Storage</h2>
+    <p>The following data is stored locally on your device only and never transmitted to any server:</p>
+    <ul>
+      <li><strong>Wallet info:</strong> Your public key (wallet address), MWA auth token, and wallet URI base for reconnecting without re-authorization.</li>
+      <li><strong>Encryption key:</strong> Stored in the Android Keystore (TEE), protected by biometric authentication. Never exported or transmitted.</li>
+      <li><strong>Transaction metadata:</strong> TxID, SKR amount, and timestamp are embedded inside each <code>.vam</code> file and cached in AsyncStorage. Never transmitted to any server.</li>
+      <li><strong>Encrypted memo files (.vam):</strong> Stored in <code>DocumentDir/VaultMemo/</code> (in-app list) and <code>Downloads/VaultMemo/</code> via MediaStore (permanent backup).</li>
+      <li><strong>Theme preference:</strong> Light/dark mode setting, stored locally.</li>
+    </ul>
+
+    <h2>In-App File Management</h2>
+    <p>VaultMemo v1.2 includes an in-app file list that reads encrypted <code>.vam</code> files stored in <code>DocumentDir/VaultMemo/</code>. All file operations (list, rename, delete) are performed locally on-device only.</p>
+    <ul>
+      <li><strong>File list:</strong> Reads file metadata (name, size, modification date) only. No file contents are read unless the user initiates decryption.</li>
+      <li><strong>Delete:</strong> Files are permanently deleted from <code>DocumentDir/VaultMemo/</code> only. Files in <code>Downloads/VaultMemo/</code> are not affected.</li>
+      <li><strong>Rename:</strong> File names are changed locally within <code>DocumentDir/VaultMemo/</code>. No external services are contacted.</li>
+    </ul>
+
+    <h2>On-Chain Integrity Verification</h2>
+    <p>When you tap "Verify On-Chain" on a decrypted file, VaultMemo:</p>
+    <ul>
+      <li>Sends a request to a Solana RPC endpoint to fetch the transaction by its TxID. Only the TxID is transmitted — no memo content or private data.</li>
+      <li>Uses a three-endpoint fallback chain: <code>rpc.ankr.com/solana</code> (primary), <code>api.mainnet-beta.solana.com</code> (secondary), <code>mainnet.helius-rpc.com</code> (last resort).</li>
+      <li>Parses the transaction's log messages to extract the stored hash prefix and compares it with a locally computed SHA-256 hash.</li>
+    </ul>
+
+    <h2>Encryption Certificate</h2>
+    <p>VaultMemo v1.2 allows users to generate a shareable encryption certificate image. The certificate is generated entirely on-device and contains only:</p>
+    <ul>
+      <li>File name (as displayed in the app)</li>
+      <li>Wallet address (truncated: first 6 and last 6 characters)</li>
+      <li>Transaction ID (truncated)</li>
+      <li>Encryption tier, algorithm, file size, and timestamp</li>
+    </ul>
+    <p>Sharing is performed through the Android system share sheet. No certificate data is transmitted to VaultMemo servers (none exist).</p>
+
+    <h2>File Storage (On-Device)</h2>
+    <p>Upon user action, VaultMemo writes encrypted <code>.vam</code> files to two locations:</p>
+    <ul>
+      <li><code>DocumentDir/VaultMemo/</code> — for in-app file list access (cleared if app is uninstalled)</li>
+      <li><code>Downloads/VaultMemo/</code> via MediaStore — for permanent storage accessible via file manager (persists after app uninstall)</li>
+    </ul>
+    <p>Each file contains the AES-256-GCM encrypted memo (base64), the Solana TxID, and a timestamp. Memo content is never readable without the correct encryption key.</p>
+
+    <h2>Blockchain Data (Public)</h2>
+    <p>When you save a memo, VaultMemo submits a Solana transaction containing:</p>
+    <ul>
+      <li>A partial hash: the first 16 hex characters of the SHA-256 hash of your encrypted data, plus a Unix timestamp (SPL Memo instruction).</li>
+      <li>An SKR token transfer from your wallet to the developer's wallet (usage fee — see pricing tiers in the EULA).</li>
+      <li>A Solana Pay reference key (randomly generated) for transaction tracking.</li>
+    </ul>
+    <div class="notice">Your wallet address and the above data are visible on the public Solana blockchain. Your memo content is <strong>never</strong> included in or derivable from the on-chain record.</div>
+
+    <h2>Biometric &amp; Hardware Security</h2>
+    <p>Biometric verification is handled entirely by the Android OS and TEE. The app never receives raw biometric data. The encryption key is invalidated if the device fingerprint is changed.</p>
+
+    <h2>Wallet Security</h2>
+    <p>VaultMemo does not access your private keys or seed phrase. All signing is handled by the Solana Mobile Seed Vault via the Mobile Wallet Adapter (MWA) protocol. Wallet authorization is restricted exclusively to the Seed Vault; third-party wallet apps are blocked at the application level.</p>
+
+    <h2>Third-Party Services</h2>
+    <p>VaultMemo does not integrate advertising, analytics, or tracking services. It communicates with the following external services only:</p>
+
+    <div class="service-card">
+      <div class="service-name">Solana RPC</div>
+      <div class="service-desc">
+        <span class="tag">primary</span><code>rpc.ankr.com/solana</code><br/>
+        <span class="tag">secondary</span><code>api.mainnet-beta.solana.com</code><br/>
+        <span class="tag">last resort</span><code>mainnet.helius-rpc.com</code><br/>
+        Transaction submission, balance queries, and on-chain verification. Only your public wallet address and TxID are included.
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-name">Jupiter Price API</div>
+      <div class="service-desc">
+        <code>api.jup.ag</code> — Real-time SKR/USD price for fee calculation. No personal data is transmitted.
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-name">CoinGecko API</div>
+      <div class="service-desc">
+        <code>api.coingecko.com</code> — Fallback price source. No personal data is transmitted.
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-name">Firebase Remote Config (Google)</div>
+      <div class="service-desc">
+        Used to deliver app announcements and dynamic pricing configuration. Firebase Remote Config may collect a Firebase Installation ID and basic device/app metadata (OS version, app version) as part of its standard operation. No memo content or wallet private keys are transmitted.<br/>
+        <a href="https://firebase.google.com/support/privacy">firebase.google.com/support/privacy</a> &nbsp;·&nbsp; <a href="https://policies.google.com/privacy">Google Privacy Policy</a>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-name">Solscan</div>
+      <div class="service-desc">
+        <code>solscan.io</code> — Opened in your browser when you tap a TxID. No data is sent by the app itself.
+      </div>
+    </div>
+
+    <h2>Children's Privacy</h2>
+    <p>VaultMemo does not knowingly collect any data from anyone, including children under 13.</p>
+
+    <h2>Changes to This Policy</h2>
+    <p>If this policy is updated, the new version will be published at this URL with a revised date.</p>
+
+    <hr class="divider"/>
+
+    <div class="footer">
+      Contact &nbsp;·&nbsp; X: <a href="https://x.com/i_naong">@i_naong</a>
+    </div>
+
   </div>
-
-  <h2>Data Collection</h2>
-  <p>VaultMemo collects no personal information. No account or registration is required.</p>
-
-  <h2>Local Data Storage</h2>
-  <p>The following data is stored locally on your device only and never transmitted to any server:</p>
-  <ul>
-    <li><strong>Wallet info:</strong> Your public key (wallet address), MWA auth token, and wallet URI base for reconnecting without re-authorization.</li>
-    <li><strong>Encryption key:</strong> Stored in the Android Keystore (TEE), protected by biometric authentication. Never exported or transmitted.</li>
-    <li><strong>Transaction metadata:</strong> TxID, SKR amount, and timestamp are embedded inside each <code>.vam</code> file and cached in AsyncStorage. Never transmitted to any server.</li>
-    <li><strong>Theme preference:</strong> Light/dark mode setting, stored locally.</li>
-  </ul>
-
-  <h2>File Storage (On-Device)</h2>
-  <p>Upon user action, VaultMemo writes encrypted <code>.vam</code> files to <code>Downloads/VaultMemo/</code>. Each file contains the AES-256-GCM encrypted memo (base64), the Solana TxID, and a timestamp. Memo content is never readable without the correct encryption key. These files are not transmitted to any server.</p>
-
-  <h2>Blockchain Data (Public)</h2>
-  <p>When you save a memo, VaultMemo submits a Solana transaction containing:</p>
-  <ul>
-    <li>A partial hash: the first 16 hex characters of the SHA-256 hash of your encrypted data, plus a Unix timestamp (SPL Memo instruction).</li>
-    <li>An SKR token transfer from your wallet to the developer's wallet (usage fee — see pricing tiers in the EULA).</li>
-    <li>A Solana Pay reference key (randomly generated) for transaction tracking.</li>
-  </ul>
-  <p>Your wallet address and the above data are visible on the public Solana blockchain. Your memo content is never included in or derivable from the on-chain record.</p>
-
-  <h2>Biometric &amp; Hardware Security</h2>
-  <p>Biometric verification is handled entirely by the Android OS and TEE. The app never receives raw biometric data. The encryption key is invalidated if the device fingerprint is changed.</p>
-
-  <h2>Wallet Security</h2>
-  <p>VaultMemo does not access your private keys or seed phrase. All signing is handled by the Solana Mobile Seed Vault via the Mobile Wallet Adapter (MWA) protocol. Wallet authorization is restricted exclusively to the Seed Vault; third-party wallet apps are blocked at the application level.</p>
-
-  <h2>Third-Party Services</h2>
-  <p>VaultMemo does not integrate advertising, analytics, or tracking services. It communicates with the following external services for blockchain operations and price data only:</p>
-  <ul>
-    <li><strong>Solana RPC:</strong> <code>api.mainnet-beta.solana.com</code> (primary), <code>mainnet.helius-rpc.com</code> (fallback) — transaction submission and balance queries. Only your public wallet address is included.</li>
-    <li><strong>Jupiter Price API</strong> (<code>api.jup.ag</code>): Real-time SKR/USD price for fee calculation.</li>
-    <li><strong>CoinGecko API</strong> (<code>api.coingecko.com</code>): Fallback price source.</li>
-    <li><strong>Solscan</strong> (<code>solscan.io</code>): Opened in your browser when you tap a TxID. No data is sent by the app itself.</li>
-  </ul>
-
-  <h2>Children's Privacy</h2>
-  <p>VaultMemo does not knowingly collect any data from anyone, including children under 13.</p>
-
-  <h2>Changes to This Policy</h2>
-  <p>If this policy is updated, the new version will be published at this URL with a revised date.</p>
-
-  <h2>Contact</h2>
-  <p>X: <a href="https://x.com/i_naong">@i_naong</a></p>
 </body>
 </html>
