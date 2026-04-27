@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Privacy Policy – VaultMemo v1.2</title>
+  <title>Privacy Policy – VaultMemo v1.3</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet"/>
@@ -25,6 +25,7 @@
       padding: 60px 24px 80px;
     }
 
+    /* ── Header ── */
     .header {
       display: flex;
       align-items: center;
@@ -50,6 +51,7 @@
       margin-top: 2px;
     }
 
+    /* ── Hero banner ── */
     .hero {
       background: #091628;
       border: 1px solid #1e3050;
@@ -63,6 +65,7 @@
     }
     .hero strong { color: #43e880; }
 
+    /* ── Section headings ── */
     h2 {
       font-family: 'Space Grotesk', sans-serif;
       font-size: 0.78rem;
@@ -102,6 +105,7 @@
       color: #43e880;
     }
 
+    /* ── Third-party service cards ── */
     .service-card {
       background: #0d1828;
       border: 1px solid #1e3050;
@@ -135,6 +139,7 @@
       margin-bottom: 4px;
     }
 
+    /* ── Notice box ── */
     .notice {
       background: #091628;
       border-left: 3px solid #43e880;
@@ -146,11 +151,14 @@
     }
     .notice strong { color: #cfe0ff; }
 
+    /* ── Link ── */
     a { color: #43e880; text-decoration: none; }
     a:hover { text-decoration: underline; }
 
+    /* ── Divider ── */
     .divider { border: none; border-top: 1px solid #1e3050; margin: 44px 0; }
 
+    /* ── Footer ── */
     .footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid #1e3050; font-size: 0.82rem; color: #3a5278; }
   </style>
 </head>
@@ -163,7 +171,7 @@
       </div>
       <div class="header-text">
         <h1>Privacy Policy</h1>
-        <div class="meta">VaultMemo v1.2 &nbsp;·&nbsp; no10messi.skr &nbsp;·&nbsp; Last updated: March 2026</div>
+        <div class="meta">VaultMemo v1.3 &nbsp;·&nbsp; no10messi.skr &nbsp;·&nbsp; Last updated: April 2026</div>
       </div>
     </div>
 
@@ -186,7 +194,7 @@
     </ul>
 
     <h2>In-App File Management</h2>
-    <p>VaultMemo v1.2 includes an in-app file list that reads encrypted <code>.vam</code> files stored in <code>DocumentDir/VaultMemo/</code>. All file operations (list, rename, delete) are performed locally on-device only.</p>
+    <p>VaultMemo includes an in-app file list that reads encrypted <code>.vam</code> files stored in <code>DocumentDir/VaultMemo/</code>. All file operations (list, rename, delete) are performed locally on-device only.</p>
     <ul>
       <li><strong>File list:</strong> Reads file metadata (name, size, modification date) only. No file contents are read unless the user initiates decryption.</li>
       <li><strong>Delete:</strong> Files are permanently deleted from <code>DocumentDir/VaultMemo/</code> only. Files in <code>Downloads/VaultMemo/</code> are not affected.</li>
@@ -197,17 +205,17 @@
     <p>When you tap "Verify On-Chain" on a decrypted file, VaultMemo:</p>
     <ul>
       <li>Sends a request to a Solana RPC endpoint to fetch the transaction by its TxID. Only the TxID is transmitted — no memo content or private data.</li>
-      <li>Uses a three-endpoint fallback chain: <code>rpc.ankr.com/solana</code> (primary), <code>api.mainnet-beta.solana.com</code> (secondary), <code>mainnet.helius-rpc.com</code> (last resort).</li>
+      <li>Uses a two-endpoint fallback chain: <code>rpc.ankr.com/solana</code> (primary), <code>api.mainnet-beta.solana.com</code> (secondary).</li>
       <li>Parses the transaction's log messages to extract the stored hash prefix and compares it with a locally computed SHA-256 hash.</li>
     </ul>
 
     <h2>Encryption Certificate</h2>
-    <p>VaultMemo v1.2 allows users to generate a shareable encryption certificate image. The certificate is generated entirely on-device and contains only:</p>
+    <p>VaultMemo allows users to generate a shareable encryption certificate image. The certificate is generated entirely on-device and contains only:</p>
     <ul>
       <li>File name (as displayed in the app)</li>
       <li>Wallet address (truncated: first 6 and last 6 characters)</li>
       <li>Transaction ID (truncated)</li>
-      <li>Encryption tier, algorithm, file size, and timestamp</li>
+      <li>Encryption tier, algorithm, file size, save timestamp, and TX confirmation time (Solana block time)</li>
     </ul>
     <p>Sharing is performed through the Android system share sheet. No certificate data is transmitted to VaultMemo servers (none exist).</p>
 
@@ -223,7 +231,7 @@
     <p>When you save a memo, VaultMemo submits a Solana transaction containing:</p>
     <ul>
       <li>A partial hash: the first 16 hex characters of the SHA-256 hash of your encrypted data, plus a Unix timestamp (SPL Memo instruction).</li>
-      <li>An SKR token transfer from your wallet to the developer's wallet (usage fee — see pricing tiers in the EULA).</li>
+      <li>A token transfer from your wallet to the developer's wallet (usage fee — see pricing tiers in the EULA).</li>
       <li>A Solana Pay reference key (randomly generated) for transaction tracking.</li>
     </ul>
     <div class="notice">Your wallet address and the above data are visible on the public Solana blockchain. Your memo content is <strong>never</strong> included in or derivable from the on-chain record.</div>
@@ -232,7 +240,7 @@
     <p>Biometric verification is handled entirely by the Android OS and TEE. The app never receives raw biometric data. The encryption key is invalidated if the device fingerprint is changed.</p>
 
     <h2>Wallet Security</h2>
-    <p>VaultMemo does not access your private keys or seed phrase. All signing is handled by the Solana Mobile Seed Vault via the Mobile Wallet Adapter (MWA) protocol. Wallet authorization is restricted exclusively to the Seed Vault; third-party wallet apps are blocked at the application level.</p>
+    <p>VaultMemo does not access your private keys or seed phrase. All signing is handled via the Mobile Wallet Adapter (MWA) protocol. Supported wallets include the Solana Mobile Seed Vault (built-in on Saga/Seeker devices), Solflare, and Jupiter.</p>
 
     <h2>Third-Party Services</h2>
     <p>VaultMemo does not integrate advertising, analytics, or tracking services. It communicates with the following external services only:</p>
@@ -241,8 +249,7 @@
       <div class="service-name">Solana RPC</div>
       <div class="service-desc">
         <span class="tag">primary</span><code>rpc.ankr.com/solana</code><br/>
-        <span class="tag">secondary</span><code>api.mainnet-beta.solana.com</code><br/>
-        <span class="tag">last resort</span><code>mainnet.helius-rpc.com</code><br/>
+        <span class="tag">fallback</span><code>api.mainnet-beta.solana.com</code><br/>
         Transaction submission, balance queries, and on-chain verification. Only your public wallet address and TxID are included.
       </div>
     </div>
@@ -250,7 +257,7 @@
     <div class="service-card">
       <div class="service-name">Jupiter Price API</div>
       <div class="service-desc">
-        <code>api.jup.ag</code> — Real-time SKR/USD price for fee calculation. No personal data is transmitted.
+        <code>api.jup.ag</code> — Real-time SKR/SOL price for fee calculation. No personal data is transmitted.
       </div>
     </div>
 
