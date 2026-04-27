@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>License – VaultMemo v1.2</title>
+  <title>License – VaultMemo v1.3</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet"/>
@@ -25,6 +25,7 @@
       padding: 60px 24px 80px;
     }
 
+    /* ── Header ── */
     .header {
       display: flex;
       align-items: center;
@@ -50,6 +51,7 @@
       margin-top: 2px;
     }
 
+    /* ── Section headings ── */
     h2 {
       font-family: 'Space Grotesk', sans-serif;
       font-size: 0.78rem;
@@ -78,7 +80,6 @@
       line-height: 1.75;
     }
     ul li strong { color: #cfe0ff; }
-
     code {
       font-family: 'Courier New', monospace;
       font-size: 0.85em;
@@ -89,6 +90,7 @@
       color: #43e880;
     }
 
+    /* ── Pricing table ── */
     .table-wrap { overflow-x: auto; margin: 16px 0 20px; border-radius: 12px; border: 1px solid #1e3050; }
     table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
     thead tr { background: #112035; }
@@ -109,6 +111,7 @@
     td.free { color: #43e880; font-weight: 600; }
     td.muted { color: #3a5278; }
 
+    /* ── Card (open source box) ── */
     .card {
       background: #0d1828;
       border: 1px solid #1e3050;
@@ -133,6 +136,7 @@
     .card a { color: #43e880; text-decoration: none; font-size: 0.82rem; margin-left: 4px; }
     .card a:hover { text-decoration: underline; }
 
+    /* ── Notice box ── */
     .notice {
       background: #091628;
       border-left: 3px solid #43e880;
@@ -144,11 +148,14 @@
     }
     .notice strong { color: #cfe0ff; }
 
+    /* ── Link ── */
     a { color: #43e880; text-decoration: none; }
     a:hover { text-decoration: underline; }
 
+    /* ── Divider ── */
     .divider { border: none; border-top: 1px solid #1e3050; margin: 44px 0; }
 
+    /* ── Footer ── */
     .footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid #1e3050; font-size: 0.82rem; color: #3a5278; }
   </style>
 </head>
@@ -161,7 +168,7 @@
       </div>
       <div class="header-text">
         <h1>End User License Agreement</h1>
-        <div class="meta">VaultMemo v1.2 &nbsp;·&nbsp; no10messi.skr &nbsp;·&nbsp; Last updated: March 2026</div>
+        <div class="meta">VaultMemo v1.3 &nbsp;·&nbsp; no10messi.skr &nbsp;·&nbsp; Last updated: April 2026</div>
       </div>
     </div>
 
@@ -177,13 +184,13 @@
 
     <h2>Security Architecture</h2>
     <ul>
-      <li><strong>Seed Vault exclusive:</strong> VaultMemo is restricted exclusively to the Solana Mobile Seed Vault. Third-party wallet apps are blocked at the application level.</li>
+      <li><strong>Multi-wallet support:</strong> VaultMemo supports the Solana Mobile Seed Vault (built-in on Saga/Seeker devices), Solflare, and Jupiter via the Mobile Wallet Adapter (MWA) protocol. All signing is performed by the selected wallet app; VaultMemo never accesses your private keys or seed phrase.</li>
       <li><strong>Wallet-bound encryption key:</strong> Your AES-256 encryption key is deterministically derived from a one-time wallet signature, then stored in the Android Keystore (TEE) protected by biometric authentication. You are solely responsible for protecting your seed phrase.</li>
       <li><strong>Session lock:</strong> The encryption session is cleared whenever the app enters the background. Biometric re-authentication is required to resume.</li>
     </ul>
 
     <h2>Payment Terms</h2>
-    <p>Each save operation is billed based on the plaintext byte size. Fees are denominated in SKR (Seeker Rewards Token) at the real-time SKR/USD price fetched from Jupiter Price API or CoinGecko.</p>
+    <p>Each save operation is billed based on the plaintext byte size. VaultMemo v1.3 supports four payment tokens: SKR, SOL, USDC, and USDT. Fees are denominated in USD and converted at real-time prices fetched from Jupiter Price API or CoinGecko. Pricing tiers may be updated remotely via Firebase Remote Config without a full app update.</p>
 
     <div class="table-wrap">
       <table>
@@ -191,28 +198,32 @@
           <tr>
             <th>Tier</th>
             <th>Size</th>
-            <th>Fee (USD in SKR)</th>
+            <th>SKR / SOL (USD)</th>
+            <th>USDC / USDT (USD)</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td>Trial</td><td>0 – 100 B</td><td class="free">Free</td></tr>
-          <tr><td>Seed</td><td>101 – 512 B</td><td>$0.80</td></tr>
-          <tr><td>Basic</td><td>513 – 1,024 B</td><td>$1.20</td></tr>
-          <tr><td>Standard</td><td>1,025 – 1,536 B</td><td>$1.40</td></tr>
-          <tr><td>Max</td><td>1,537 – 2,048 B</td><td>$1.50</td></tr>
-          <tr><td class="muted">Limit</td><td class="muted">Over 2,048 B</td><td class="muted">Not supported</td></tr>
+          <tr><td>Trial</td><td>0 – 100 B</td><td class="free">Free</td><td class="free">Free</td></tr>
+          <tr><td>Seed</td><td>101 – 512 B</td><td>$0.80</td><td>$0.90</td></tr>
+          <tr><td>Basic</td><td>513 – 1,024 B</td><td>$1.20</td><td>$1.30</td></tr>
+          <tr><td>Standard</td><td>1,025 – 1,536 B</td><td>$1.40</td><td>$1.50</td></tr>
+          <tr><td>Max</td><td>1,537 – 2,048 B</td><td>$1.50</td><td>$1.60</td></tr>
+          <tr><td class="muted">Limit</td><td class="muted">Over 2,048 B</td><td class="muted" colspan="2">Not supported</td></tr>
         </tbody>
       </table>
     </div>
 
     <ul>
-      <li>All SKR payments are irreversible once confirmed on-chain.</li>
+      <li>SKR and SOL are priced 10% lower than USDC/USDT for the same tier.</li>
+      <li>USDC and USDT are priced at a $0.10 premium over SKR/SOL as stablecoin options.</li>
+      <li>All payments are irreversible once confirmed on-chain.</li>
       <li>No refunds are issued for confirmed transactions.</li>
       <li>The developer is not responsible for losses from price volatility between display and confirmation.</li>
+      <li>Current pricing and token options are always displayed in-app before you confirm a save operation.</li>
     </ul>
 
     <h2>In-App File Management</h2>
-    <p>VaultMemo v1.2 includes the following local file management features. All operations are performed on-device only and do not require additional payment:</p>
+    <p>VaultMemo includes the following local file management features. All operations are performed on-device only and do not require additional payment:</p>
     <ul>
       <li><strong>File list:</strong> View all encrypted <code>.vam</code> files saved in the app's internal storage, with search, sort by date/size/name.</li>
       <li><strong>Decrypt from list:</strong> Tap any listed file to decrypt and view its contents. Biometric authentication is required.</li>
@@ -221,27 +232,30 @@
     </ul>
 
     <h2>On-Chain Integrity Verification</h2>
-    <p>VaultMemo v1.2 provides an optional "Verify On-Chain" feature accessible from the decrypted file view. This feature:</p>
+    <p>VaultMemo provides an optional "Verify On-Chain" feature accessible from the decrypted file view. This feature:</p>
     <ul>
       <li>Fetches the transaction record from the Solana blockchain using the TxID embedded in the file.</li>
       <li>Compares the on-chain hash prefix (first 16 hex characters of SHA-256) with a locally computed hash of the encrypted file content.</li>
       <li>Returns one of the following results: Match (integrity confirmed), Mismatch (file may be altered), No Memo Found, Transaction Not Found, or Error.</li>
-      <li>Requires an active internet connection and is subject to Solana RPC availability. VaultMemo uses a three-endpoint fallback chain: <code>rpc.ankr.com/solana</code> (primary), <code>api.mainnet-beta.solana.com</code> (secondary), <code>mainnet.helius-rpc.com</code> (last resort).</li>
+      <li>Requires an active internet connection and is subject to Solana RPC availability. VaultMemo uses a two-endpoint fallback chain: <code>rpc.ankr.com/solana</code> (primary), <code>api.mainnet-beta.solana.com</code> (secondary).</li>
       <li>Verification is free of charge. Solana network fees do not apply to read-only RPC queries.</li>
     </ul>
     <div class="notice"><strong>Limitation:</strong> The on-chain record is a cryptographic proof only and does not constitute legal verification, notarization, or legally admissible evidence in any jurisdiction.</div>
 
     <h2>Encryption Certificate</h2>
-    <p>VaultMemo v1.2 allows users to generate a shareable encryption certificate image after saving or decrypting a memo. The certificate:</p>
+    <p>VaultMemo allows users to generate a shareable encryption certificate image after saving or decrypting a memo. The certificate:</p>
     <ul>
       <li>Is generated entirely on-device as a PNG image.</li>
-      <li>Contains: file name, truncated wallet address, truncated TxID, encryption tier, algorithm, byte size, and timestamp.</li>
+      <li>Contains: file name, truncated wallet address, truncated TxID, encryption tier, algorithm, byte size, save timestamp, and TX confirmation time (Solana block time).</li>
       <li>Does not contain your memo content, full wallet address, or private keys.</li>
       <li>Is free of charge — no SKR payment is required.</li>
       <li>Can be shared via the Android system share sheet to any app (messaging, email, cloud storage, etc.).</li>
-      <li>Available in English (default) with a toggle to the app's current language.</li>
+      <li>Available in 15 languages matching the app's current language setting.</li>
     </ul>
     <div class="notice"><strong>Disclaimer:</strong> The certificate is an informational document only and does not constitute legal proof of encryption, authorship, or timestamp beyond the cryptographic record on the Solana blockchain.</div>
+
+    <h2>Firebase Remote Config</h2>
+    <p>VaultMemo uses Firebase Remote Config (Google) to deliver app announcements and dynamic pricing configuration. This service may update displayed pricing or announcements without a full app update. Pricing shown in-app always reflects the current active configuration. Firebase Remote Config does not transmit your memo content or wallet private keys. See the Privacy Policy for Firebase data practices.</p>
 
     <h2>Storage Permissions</h2>
     <p>VaultMemo saves encrypted <code>.vam</code> files to two locations when the user taps "Encrypt &amp; Save":</p>
@@ -266,6 +280,10 @@
     <div class="card"><strong>react-native-document-picker</strong> — MIT &nbsp;· File import &nbsp;<a href="https://github.com/rnmods/react-native-document-picker">github.com/rnmods/react-native-document-picker</a></div>
     <div class="card"><strong>react-native-share</strong> — MIT &nbsp;· Share sheet &nbsp;<a href="https://github.com/react-native-share/react-native-share">github.com/react-native-share/react-native-share</a></div>
     <div class="card"><strong>react-native-view-shot</strong> — MIT &nbsp;· Certificate image capture &nbsp;<a href="https://github.com/gre/react-native-view-shot">github.com/gre/react-native-view-shot</a></div>
+    <div class="card"><strong>i18next / react-i18next</strong> — MIT &nbsp;· Internationalization (15 languages) &nbsp;<a href="https://github.com/i18next/react-i18next">github.com/i18next/react-i18next</a></div>
+    <div class="card"><strong>react-native-localize</strong> — MIT &nbsp;· Device locale detection &nbsp;<a href="https://github.com/zoontek/react-native-localize">github.com/zoontek/react-native-localize</a></div>
+    <div class="card"><strong>Inter (typeface)</strong> — SIL Open Font License 1.1 &nbsp;<a href="https://rsms.me/inter/">rsms.me/inter</a></div>
+    <div class="card"><strong>Space Grotesk (typeface)</strong> — SIL Open Font License 1.1 &nbsp;<a href="https://fonts.google.com/specimen/Space+Grotesk">fonts.google.com/specimen/Space+Grotesk</a></div>
     <div class="card"><strong>Firebase Remote Config</strong> — Google &nbsp;· Dynamic configuration &nbsp;<a href="https://firebase.google.com">firebase.google.com</a></div>
 
     <h2>No Legal Guarantee</h2>
