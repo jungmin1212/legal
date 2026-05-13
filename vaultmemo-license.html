@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>License – VaultMemo v1.3.2</title>
+  <title>License – VaultMemo v1.3.3</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet"/>
@@ -168,7 +168,7 @@
       </div>
       <div class="header-text">
         <h1>End User License Agreement</h1>
-        <div class="meta">VaultMemo v1.3.2 &nbsp;·&nbsp; no10messi.skr &nbsp;·&nbsp; Last updated: May 2026</div>
+        <div class="meta">VaultMemo v1.3.3 &nbsp;·&nbsp; no10messi.skr &nbsp;·&nbsp; Last updated: May 2026</div>
       </div>
     </div>
 
@@ -185,12 +185,12 @@
     <h2>Security Architecture</h2>
     <ul>
       <li><strong>Multi-wallet support:</strong> VaultMemo supports the Solana Mobile Seed Vault (built-in on Saga/Seeker devices), Solflare, and Jupiter via the Mobile Wallet Adapter (MWA) protocol. All signing is performed by the selected wallet app; VaultMemo never accesses your private keys or seed phrase.</li>
-      <li><strong>Wallet-bound encryption key:</strong> Your AES-256 encryption key is deterministically derived from a one-time wallet signature, then stored in the Android Keystore (TEE) protected by biometric authentication. You are solely responsible for protecting your seed phrase.</li>
-      <li><strong>Session lock:</strong> The encryption session is cleared whenever the app enters the background. Biometric re-authentication is required to resume.</li>
+      <li><strong>Hardware-bound encryption key:</strong> Your AES-256 encryption key is deterministically derived from a Seed Vault hardware signature on every session. The key is never stored anywhere on the device — it exists only in memory during an active session. The same wallet always produces the same key, so encrypted files remain accessible after app reinstall as long as the same wallet is used.</li>
+      <li><strong>Session lock:</strong> The encryption session key is cleared from memory whenever the app enters the background. All open dialogs and screens are also dismissed. A new Seed Vault hardware signature is required to resume.</li>
     </ul>
 
     <h2>Payment Terms</h2>
-    <p>Each save operation is billed based on the plaintext byte size. VaultMemo v1.3.2 supports four payment tokens: SKR, SOL, USDC, and USDT. Fees are denominated in USD and converted at real-time prices fetched from Jupiter Price API or CoinGecko. Pricing tiers may be updated remotely via Firebase Remote Config without a full app update.</p>
+    <p>Each save operation is billed based on the plaintext byte size. VaultMemo v1.3.3 supports four payment tokens: SKR, SOL, USDC, and USDT. Fees are denominated in USD and converted at real-time prices fetched from Jupiter Price API or CoinGecko. Pricing tiers may be updated remotely via Firebase Remote Config without a full app update.</p>
 
     <div class="table-wrap">
       <table>
@@ -203,12 +203,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr><td>Trial</td><td>0 – 100 B</td><td class="free">Free</td><td class="free">Free</td></tr>
-          <tr><td>Seed</td><td>101 – 512 B</td><td>$0.80</td><td>$0.90</td></tr>
+          <tr><td>Trial</td><td>0 – 200 B</td><td class="free">Free</td><td class="free">Free</td></tr>
+          <tr><td>Seed</td><td>201 – 512 B</td><td>$0.80</td><td>$0.90</td></tr>
           <tr><td>Basic</td><td>513 – 1,024 B</td><td>$1.20</td><td>$1.30</td></tr>
           <tr><td>Standard</td><td>1,025 – 1,536 B</td><td>$1.40</td><td>$1.50</td></tr>
-          <tr><td>Max</td><td>1,537 – 2,048 B</td><td>$1.50</td><td>$1.60</td></tr>
-          <tr><td class="muted">Limit</td><td class="muted">Over 2,048 B</td><td class="muted" colspan="2">Not supported</td></tr>
+          <tr><td>Max</td><td>1,537 – 2,048 B</td><td>$1.60</td><td>$1.70</td></tr>
+          <tr><td>Pro</td><td>2,049 – 3,072 B</td><td>$1.90</td><td>$2.00</td></tr>
+          <tr><td>Ultra</td><td>3,073 – 4,096 B</td><td>$2.20</td><td>$2.40</td></tr>
+          <tr><td class="muted">Limit</td><td class="muted">Over 4,096 B</td><td class="muted" colspan="2">Not supported</td></tr>
         </tbody>
       </table>
     </div>
@@ -225,10 +227,11 @@
     <h2>In-App File Management</h2>
     <p>VaultMemo includes the following local file management features. All operations are performed on-device only and do not require additional payment:</p>
     <ul>
-      <li><strong>File list:</strong> View all encrypted <code>.vam</code> files saved in the app's internal storage, with search, sort by date/size/name.</li>
-      <li><strong>Decrypt from list:</strong> Tap any listed file to decrypt and view its contents. Biometric authentication is required.</li>
-      <li><strong>Rename:</strong> Rename any <code>.vam</code> file within the app's internal storage. Free of charge.</li>
-      <li><strong>Delete:</strong> Permanently delete a <code>.vam</code> file from the app's internal storage. This action is irreversible. Files in <code>Downloads/VaultMemo/</code> are not affected by in-app deletion.</li>
+      <li><strong>File list:</strong> View all encrypted <code>.vam</code> files saved in the user-selected SAF folder, with search, sort by date/size/name.</li>
+      <li><strong>Decrypt from list:</strong> Tap any listed file to decrypt and view its contents. An active session (Seed Vault signed) is required.</li>
+      <li><strong>Rename:</strong> Rename any <code>.vam</code> file within the SAF folder. Free of charge.</li>
+      <li><strong>Hide from list:</strong> Remove a file from the in-app list view without deleting it from storage. The file remains in the SAF folder and can be restored via "Restore from backup".</li>
+      <li><strong>Permanent delete:</strong> Permanently delete a <code>.vam</code> file from the SAF folder. This action is irreversible and requires confirmation.</li>
     </ul>
 
     <h2>On-Chain Integrity Verification</h2>
@@ -258,15 +261,14 @@
     <p>VaultMemo uses Firebase Remote Config (Google) to deliver app announcements and dynamic pricing configuration. This service may update displayed pricing or announcements without a full app update. Pricing shown in-app always reflects the current active configuration. Firebase Remote Config does not transmit your memo content or wallet private keys. See the Privacy Policy for Firebase data practices.</p>
 
     <h2>Storage Permissions</h2>
-    <p>VaultMemo saves encrypted <code>.vam</code> files to two locations when the user taps "Encrypt &amp; Save":</p>
-    <ul>
-      <li><code>DocumentDir/VaultMemo/</code> — app-internal storage for the in-app file list (cleared on app uninstall)</li>
-      <li><code>Downloads/VaultMemo/</code> via MediaStore — permanent storage accessible via the file manager (persists after app uninstall)</li>
-    </ul>
+    <p>VaultMemo uses Android's Storage Access Framework (SAF) to save encrypted <code>.vam</code> files. On first launch, the user selects a folder (e.g. <code>Downloads/VaultMemo/</code>) via the system folder picker. All files are saved to this single user-selected folder. SAF permissions persist across app reinstalls.</p>
     <p>No background writes occur. All file operations are user-initiated.</p>
 
+    <h2>File Naming</h2>
+    <p>Encrypted files are saved with the user-entered title as the filename (e.g. <code>my note.vam</code>). Special characters are stripped. If a file with the same name already exists, a counter suffix is appended (e.g. <code>my note(1).vam</code>).</p>
+
     <h2>Data Loss Disclaimer</h2>
-    <p>The developer is not liable for data loss resulting from: device failure; app uninstallation (note: <code>.vam</code> files in <code>Downloads/VaultMemo/</code> persist and can be re-imported; files in <code>DocumentDir/VaultMemo/</code> are deleted on uninstall); loss or compromise of the wallet seed phrase; user deletion of backup files; or in-app deletion of files from the file list. Maintain backups in multiple locations.</p>
+    <p>The developer is not liable for data loss resulting from: device failure; loss or compromise of the wallet seed phrase (which also means loss of the encryption key); user deletion of files; in-app permanent deletion; or removal of SAF folder access. Since the encryption key is derived from the wallet signature and never stored, loss of the wallet seed phrase means permanent loss of access to all encrypted files. Maintain backups of both your wallet seed phrase and your <code>.vam</code> files in multiple locations.</p>
 
     <h2>Open Source Components</h2>
     <div class="card"><strong>Solana Pay</strong> — Apache 2.0 &nbsp;<a href="https://github.com/solana-labs/solana-pay">github.com/solana-labs/solana-pay</a></div>
@@ -275,8 +277,7 @@
     <div class="card"><strong>Solana Web3.js</strong> — MIT &nbsp;<a href="https://github.com/solana-labs/solana-web3.js">github.com/solana-labs/solana-web3.js</a></div>
     <div class="card"><strong>SPL Token</strong> — Apache 2.0 &nbsp;<a href="https://github.com/solana-labs/solana-program-library">github.com/solana-labs/solana-program-library</a></div>
     <div class="card"><strong>react-native-quick-crypto</strong> — MIT &nbsp;· AES-256-GCM + SHA-256 &nbsp;<a href="https://github.com/margelo/react-native-quick-crypto">github.com/margelo/react-native-quick-crypto</a></div>
-    <div class="card"><strong>react-native-keychain</strong> — MIT &nbsp;· Android Keystore / biometric &nbsp;<a href="https://github.com/oblador/react-native-keychain">github.com/oblador/react-native-keychain</a></div>
-    <div class="card"><strong>react-native-blob-util</strong> — MIT &nbsp;· File I/O / MediaStore &nbsp;<a href="https://github.com/RonRadtke/react-native-blob-util">github.com/RonRadtke/react-native-blob-util</a></div>
+    <div class="card"><strong>react-native-blob-util</strong> — MIT &nbsp;· File I/O / SAF &nbsp;<a href="https://github.com/RonRadtke/react-native-blob-util">github.com/RonRadtke/react-native-blob-util</a></div>
     <div class="card"><strong>react-native-document-picker</strong> — MIT &nbsp;· File import &nbsp;<a href="https://github.com/rnmods/react-native-document-picker">github.com/rnmods/react-native-document-picker</a></div>
     <div class="card"><strong>react-native-share</strong> — MIT &nbsp;· Share sheet &nbsp;<a href="https://github.com/react-native-share/react-native-share">github.com/react-native-share/react-native-share</a></div>
     <div class="card"><strong>react-native-view-shot</strong> — MIT &nbsp;· Certificate image capture &nbsp;<a href="https://github.com/gre/react-native-view-shot">github.com/gre/react-native-view-shot</a></div>
