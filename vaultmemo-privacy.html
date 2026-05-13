@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Privacy Policy – VaultMemo v1.3.2</title>
+  <title>Privacy Policy – VaultMemo v1.3.3</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet"/>
@@ -171,7 +171,7 @@
       </div>
       <div class="header-text">
         <h1>Privacy Policy</h1>
-        <div class="meta">VaultMemo v1.3.2 &nbsp;·&nbsp; no10messi.skr &nbsp;·&nbsp; Last updated: May 2026</div>
+        <div class="meta">VaultMemo v1.3.3 &nbsp;·&nbsp; no10messi.skr &nbsp;·&nbsp; Last updated: May 2026</div>
       </div>
     </div>
 
@@ -187,18 +187,20 @@
     <p>The following data is stored locally on your device only and never transmitted to any server:</p>
     <ul>
       <li><strong>Wallet info:</strong> Your public key (wallet address), MWA auth token, and wallet URI base for reconnecting without re-authorization.</li>
-      <li><strong>Encryption key:</strong> Stored in the Android Keystore (TEE), protected by biometric authentication. Never exported or transmitted.</li>
-      <li><strong>Transaction metadata:</strong> TxID, SKR amount, and timestamp are embedded inside each <code>.vam</code> file and cached in AsyncStorage. Never transmitted to any server.</li>
-      <li><strong>Encrypted memo files (.vam):</strong> Stored in <code>DocumentDir/VaultMemo/</code> (in-app list) and <code>Downloads/VaultMemo/</code> via MediaStore (permanent backup).</li>
-      <li><strong>Theme preference:</strong> Light/dark mode setting, stored locally.</li>
+      <li><strong>Encryption key:</strong> Never stored. The AES-256 session key is derived from a Seed Vault hardware signature on every unlock and exists only in memory during an active session. It is cleared from memory when the app enters the background.</li>
+      <li><strong>Vault initialized flag:</strong> A simple boolean stored in AsyncStorage (<code>@vm_initialized</code>) to indicate that first-time vault setup is complete. Contains no sensitive data.</li>
+      <li><strong>Transaction metadata:</strong> TxID, payment amount, and timestamp are embedded inside each <code>.vam</code> file. Never transmitted to any server.</li>
+      <li><strong>Encrypted memo files (.vam):</strong> Stored in the user-selected SAF folder. Persists across app reinstalls.</li>
+      <li><strong>Theme &amp; language preference:</strong> Stored locally in AsyncStorage.</li>
     </ul>
 
     <h2>In-App File Management</h2>
-    <p>VaultMemo includes an in-app file list that reads encrypted <code>.vam</code> files stored in <code>DocumentDir/VaultMemo/</code>. All file operations (list, rename, delete) are performed locally on-device only.</p>
+    <p>VaultMemo includes an in-app file list that reads encrypted <code>.vam</code> files from the user-selected SAF folder. All file operations are performed locally on-device only.</p>
     <ul>
       <li><strong>File list:</strong> Reads file metadata (name, size, modification date) only. No file contents are read unless the user initiates decryption.</li>
-      <li><strong>Delete:</strong> Files are permanently deleted from <code>DocumentDir/VaultMemo/</code> only. Files in <code>Downloads/VaultMemo/</code> are not affected.</li>
-      <li><strong>Rename:</strong> File names are changed locally within <code>DocumentDir/VaultMemo/</code>. No external services are contacted.</li>
+      <li><strong>Hide from list:</strong> Removes a file from the in-app list view without deleting the file from storage. The hidden file URI is stored in AsyncStorage and excluded from list display.</li>
+      <li><strong>Permanent delete:</strong> Permanently deletes the <code>.vam</code> file from the SAF folder. This action is irreversible.</li>
+      <li><strong>Rename:</strong> File names are changed within the SAF folder. No external services are contacted.</li>
     </ul>
 
     <h2>On-Chain Integrity Verification</h2>
@@ -220,11 +222,7 @@
     <p>Sharing is performed through the Android system share sheet. No certificate data is transmitted to VaultMemo servers (none exist).</p>
 
     <h2>File Storage (On-Device)</h2>
-    <p>Upon user action, VaultMemo writes encrypted <code>.vam</code> files to two locations:</p>
-    <ul>
-      <li><code>DocumentDir/VaultMemo/</code> — for in-app file list access (cleared if app is uninstalled)</li>
-      <li><code>Downloads/VaultMemo/</code> via MediaStore — for permanent storage accessible via file manager (persists after app uninstall)</li>
-    </ul>
+    <p>Upon user action, VaultMemo writes encrypted <code>.vam</code> files to the user-selected SAF folder (chosen once via the Android system folder picker). SAF permissions persist across app reinstalls, so files remain accessible without re-granting permission.</p>
     <p>Each file contains the AES-256-GCM encrypted memo (base64), the Solana TxID, and a timestamp. Memo content is never readable without the correct encryption key.</p>
 
     <h2>Blockchain Data (Public)</h2>
@@ -236,8 +234,8 @@
     </ul>
     <div class="notice">Your wallet address and the above data are visible on the public Solana blockchain. Your memo content is <strong>never</strong> included in or derivable from the on-chain record.</div>
 
-    <h2>Biometric &amp; Hardware Security</h2>
-    <p>Biometric verification is handled entirely by the Android OS and TEE. The app never receives raw biometric data. The encryption key is invalidated if the device fingerprint is changed.</p>
+    <h2>Hardware Security (Seed Vault)</h2>
+    <p>VaultMemo uses the Solana Mobile Seed Vault as the hardware security element for session authentication. Signing is performed entirely within the Seed Vault chip — the app never receives private keys or raw biometric data. Because the encryption key is derived from the Seed Vault signature, it is hardware-bound and cannot be extracted from the device.</p>
 
     <h2>Wallet Security</h2>
     <p>VaultMemo does not access your private keys or seed phrase. All signing is handled via the Mobile Wallet Adapter (MWA) protocol. Supported wallets include the Solana Mobile Seed Vault (built-in on Saga/Seeker devices), Solflare, and Jupiter.</p>
