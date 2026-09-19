@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -303,6 +302,41 @@
           <div class="step-body">
             <h3>What happens if I forget my password?</h3>
             <p>There's no separate password to forget. Your encryption key is generated instantly from a Seed Vault signature each time, so as long as your wallet's seed phrase is safe, you'll never lose access to your key.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">Q</div>
+          <div class="step-body">
+            <h3>What happens if I lose my wallet's seed phrase?</h3>
+            <p>Since your encryption key is derived from your wallet's signature, losing the seed phrase means permanently losing access to your encrypted notes. Keep your seed phrase and your .vam backup files stored safely, in a separate place.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">Q</div>
+          <div class="step-body">
+            <h3>Will my notes disappear if I delete and reinstall the app?</h3>
+            <p>No. Your encrypted .vam files are stored in a folder you chose on your device (e.g. Downloads/VaultMemo), not inside the app itself. Reconnect with the same wallet after reinstalling, and everything is still there.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">Q</div>
+          <div class="step-body">
+            <h3>How does on-chain verification work?</h3>
+            <p>VaultMemo compares the hash of your saved file against the record actually written to the Solana blockchain. If even one byte has changed, or the file is fake, verification fails.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">Q</div>
+          <div class="step-body">
+            <h3>Do I need to pay a monthly subscription?</h3>
+            <p>No. There's no subscription at all. You pay a small, one-time fee based on the note's size only when you save it. Notes under 200 bytes are free.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">Q</div>
+          <div class="step-body">
+            <h3>VaultMemo says it has no servers, so why does it use Firebase?</h3>
+            <p>Firebase Remote Config is used only to push pricing updates and in-app announcements, not to store or process your data. Your memo content, wallet keys, and personal information are never sent to Firebase or any other server.</p>
           </div>
         </div>
       </div>
