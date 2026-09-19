@@ -1,11 +1,5 @@
-/**
- * VaultMemo Firebase Remote Config
- * - pricing_tiers:     요금제 JSON
- * - announcement_text: 공지 문구 (빈 문자열이면 미표시)
- * - free_wallets:      무료 사용 허가 지갑 목록 JSON
- *   형식: [{"addr":"ABC...","until":"2026-12-31"}, ...]
- *   until 날짜 당일까지 무료 (이후 일반 결제)
- */
+// Firebase Remote Config — pricing, announcements, and the free-wallet whitelist.
+// Nothing here reads or transmits memo content, wallet keys, or personal data.
 import remoteConfig from '@react-native-firebase/remote-config';
 
 export interface PricingTier {
@@ -16,8 +10,8 @@ export interface PricingTier {
 }
 
 export interface FreeWalletEntry {
-  addr:  string;
-  until: string; // "YYYY-MM-DD"
+  addr: string;
+  until: string; // "YYYY-MM-DD", free until end of this day
 }
 
 const DEFAULT_TIERS: PricingTier[] = [
@@ -36,14 +30,13 @@ export async function initRemoteConfig(): Promise<void> {
     announcement_text: '',
     free_wallets:      '[]',
   });
-  await remoteConfig().setConfigSettings({minimumFetchIntervalMillis: 300000}); // 5분
+  await remoteConfig().setConfigSettings({minimumFetchIntervalMillis: 300000});
   await remoteConfig().fetchAndActivate();
 }
 
 export function getPricingTiers(): PricingTier[] {
   try {
-    const raw = remoteConfig().getValue('pricing_tiers').asString();
-    const parsed = JSON.parse(raw);
+    const parsed = JSON.parse(remoteConfig().getValue('pricing_tiers').asString());
     if (Array.isArray(parsed) && parsed.length > 0) return parsed;
   } catch {}
   return DEFAULT_TIERS;
@@ -53,21 +46,20 @@ export function getAnnouncementText(): string {
   return remoteConfig().getValue('announcement_text').asString();
 }
 
-/**
- * 현재 날짜 기준으로 walletAddr 가 무료 대상인지 확인.
- * Firebase 콘솔에서 free_wallets 값을 수정하면 앱 재빌드 없이 반영됨.
- */
+// Checks the fetched whitelist locally — the wallet address itself never leaves the device.
+// Editing free_wallets in the Firebase console takes effect without a new app build.
 export function isFreeWallet(walletAddr: string): boolean {
   try {
-    const raw = remoteConfig().getValue('free_wallets').asString();
-    const list: FreeWalletEntry[] = JSON.parse(raw);
+    const list: FreeWalletEntry[] = JSON.parse(remoteConfig().getValue('free_wallets').asString());
     if (!Array.isArray(list)) return false;
+
     const today = new Date();
     today.setHours(0, 0, 0, 0);
+
     return list.some(entry => {
       if (entry.addr !== walletAddr) return false;
       const until = new Date(entry.until);
-      until.setHours(23, 59, 59, 999); // until 날짜 당일 말까지
+      until.setHours(23, 59, 59, 999);
       return today <= until;
     });
   } catch {
