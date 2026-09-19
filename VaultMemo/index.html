@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VaultMemo — Encrypted Memo Vault for Solana Seeker</title>
+<meta name="description" content="VaultMemo is an encrypted memo vault with on-chain proof, built for Solana Seeker and Saga. Your secrets stay yours. Your proof lives on Solana.">
+<style>
+  :root {
+    --bg: #0a0f0c;
+    --bg-raised: #101612;
+    --line: #1c2620;
+    --green: #2fbf71;
+    --green-dim: #1f7a4a;
+    --text: #e9efe9;
+    --text-dim: #9aa89f;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    line-height: 1.6;
+  }
+
+  a { color: var(--green); }
+
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Hero */
+  .hero {
+    padding: 96px 0 72px;
+    text-align: center;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .logo {
+    width: 76px;
+    height: 76px;
+    border-radius: 20px;
+    margin-bottom: 28px;
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 3rem;
+    letter-spacing: 0.02em;
+    margin: 0 0 14px;
+  }
+
+  .tagline {
+    color: var(--text-dim);
+    font-size: 1.05rem;
+    margin: 0 0 32px;
+  }
+
+  .quote {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--text);
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  .quote::before, .quote::after { content: "\2014" ; color: var(--green-dim); }
+
+  /* Sections */
+  section {
+    padding: 64px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  section:last-of-type { border-bottom: none; }
+
+  h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 1.6rem;
+    margin: 0 0 12px;
+  }
+
+  .lede {
+    color: var(--text-dim);
+    max-width: 520px;
+    margin: 0 0 40px;
+  }
+
+  /* Steps */
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .step {
+    display: flex;
+    gap: 20px;
+    padding: 20px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .step:first-child { border-top: none; }
+
+  .step-num {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid var(--green-dim);
+    color: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-family: var(--sans);
+  }
+
+  .step-body h3 {
+    margin: 2px 0 6px;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .step-body p {
+    margin: 0;
+    color: var(--text-dim);
+    font-size: 0.95rem;
+  }
+
+  /* Who / feature grid */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  @media (max-width: 560px) {
+    .grid { grid-template-columns: 1fr; }
+    h1 { font-size: 2.2rem; }
+    .hero { padding: 72px 0 56px; }
+  }
+
+  .card {
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 20px;
+  }
+
+  .card h3 {
+    margin: 0 0 8px;
+    font-size: 0.95rem;
+    color: var(--green);
+    font-weight: 600;
+  }
+
+  .card p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-dim);
+  }
+
+  /* Footer */
+  footer {
+    padding: 56px 0 80px;
+    text-align: center;
+  }
+
+  footer h2 { margin-bottom: 8px; }
+
+  .contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 28px 0 0;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: left;
+  }
+
+  .contact-list li {
+    display: flex;
+    gap: 12px;
+    font-size: 0.95rem;
+  }
+
+  .contact-list .label {
+    color: var(--text-dim);
+    width: 90px;
+    flex-shrink: 0;
+  }
+
+  .store-badge {
+    display: inline-block;
+    margin-top: 32px;
+    padding: 10px 20px;
+    border: 1px solid var(--green-dim);
+    border-radius: 100px;
+    color: var(--green);
+    font-size: 0.9rem;
+    text-decoration: none;
+  }
+</style>
+</head>
+<body>
+
+  <div class="wrap">
+    <div class="hero">
+      <img src="icon.png" alt="VaultMemo icon" class="logo">
+      <h1>VaultMemo</h1>
+      <p class="tagline">Encrypted memo vault with on-chain proof, for Solana Seeker &amp; Saga</p>
+      <p class="quote">Your secrets stay yours. Your proof lives on Solana.</p>
+    </div>
+
+    <section>
+      <h2>What it does</h2>
+      <p class="lede">
+        VaultMemo stores your seed phrases, passwords, and private notes on your device only —
+        never on a server. Each time you save, a fingerprint of that note is written to the
+        Solana blockchain, so you can later prove it existed and hasn't been altered, without
+        ever exposing the note itself.
+      </p>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Local-only encryption</h3>
+          <p>Notes are encrypted and stored on your device. Nothing is uploaded, no account is needed.</p>
+        </div>
+        <div class="card">
+          <h3>Tamper-evident proof</h3>
+          <p>A hash of each note is recorded on Solana mainnet, so anyone can independently verify it later.</p>
+        </div>
+        <div class="card">
+          <h3>Seed Vault–derived key</h3>
+          <p>Your Solana wallet signs a fixed message, and that signature is used to derive the encryption key. No PIN, no biometrics.</p>
+        </div>
+        <div class="card">
+          <h3>Pay per save</h3>
+          <p>No subscription. A small one-time payment unlocks storage by size, in SKR, SOL, USDC, or USDT.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>How it works</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h3>Seed Vault signs</h3>
+            <p>Your wallet signs a fixed message on-device. The private key never leaves the hardware.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h3>A key is derived</h3>
+            <p>That signature is hashed to create an AES-256 encryption key, held only in memory.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h3>A proof goes on-chain</h3>
+            <p>A fingerprint of the encrypted note is recorded on Solana as tamper-proof evidence it existed.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <h2>Get in touch</h2>
+      <p class="lede" style="margin: 0 auto;">Questions about VaultMemo, feedback, or partnership inquiries — reach out below.</p>
+
+      <ul class="contact-list">
+        <li><span class="label">Email</span> <a href="mailto:carlos_tevez@naver.com">carlos_tevez@naver.com</a></li>
+        <li><span class="label">X (Twitter)</span> <a href="https://x.com/i_naong" target="_blank" rel="noopener">@i_naong</a></li>
+        <li><span class="label">Telegram</span> <a href="https://t.me/VaultMemo" target="_blank" rel="noopener">@VaultMemo</a></li>
+      </ul>
+
+      <p style="margin-top: 32px; font-size: 0.85rem; color: var(--text-dim);">
+        <a href="vaultmemo-license-v1.3.4.html">Terms of Use</a>
+        &nbsp;·&nbsp;
+        <a href="vaultmemo-privacy-v1.3.4.html">Privacy Policy</a>
+      </p>
+    </footer>
+  </div>
+
+</body>
+</html>
